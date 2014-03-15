@@ -1,35 +1,35 @@
-function varargout = dve_rectangleFTEsearch_V3(varargin)
-% DVE_RECTANGLEFTESEARCH_V3 MATLAB code for dve_rectangleFTEsearch_V3.fig
-%      DVE_RECTANGLEFTESEARCH_V3, by itself, creates a new DVE_RECTANGLEFTESEARCH_V3 or raises the existing
+function varargout = dve_rectangleFTEsearch_V4(varargin)
+% DVE_RECTANGLEFTESEARCH_V4 MATLAB code for dve_rectangleFTEsearch_V4.fig
+%      DVE_RECTANGLEFTESEARCH_V4, by itself, creates a new DVE_RECTANGLEFTESEARCH_V4 or raises the existing
 %      singleton*.
 %
-%      H = DVE_RECTANGLEFTESEARCH_V3 returns the handle to a new DVE_RECTANGLEFTESEARCH_V3 or the handle to
+%      H = DVE_RECTANGLEFTESEARCH_V4 returns the handle to a new DVE_RECTANGLEFTESEARCH_V4 or the handle to
 %      the existing singleton*.
 %
-%      DVE_RECTANGLEFTESEARCH_V3('CALLBACK',hObject,eventData,handles,...) calls the local
-%      function named CALLBACK in DVE_RECTANGLEFTESEARCH_V3.M with the given input arguments.
+%      DVE_RECTANGLEFTESEARCH_V4('CALLBACK',hObject,eventData,handles,...) calls the local
+%      function named CALLBACK in DVE_RECTANGLEFTESEARCH_V4.M with the given input arguments.
 %
-%      DVE_RECTANGLEFTESEARCH_V3('Property','Value',...) creates a new DVE_RECTANGLEFTESEARCH_V3 or raises the
+%      DVE_RECTANGLEFTESEARCH_V4('Property','Value',...) creates a new DVE_RECTANGLEFTESEARCH_V4 or raises the
 %      existing singleton*.  Starting from the left, property value pairs are
-%      applied to the GUI before dve_rectangleFTEsearch_V3_OpeningFcn gets called.  An
+%      applied to the GUI before dve_rectangleFTEsearch_V4_OpeningFcn gets called.  An
 %      unrecognized property name or invalid value makes property application
-%      stop.  All inputs are passed to dve_rectangleFTEsearch_V3_OpeningFcn via varargin.
+%      stop.  All inputs are passed to dve_rectangleFTEsearch_V4_OpeningFcn via varargin.
 %
 %      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
 %      instance to run (singleton)".
 %
 % See also: GUIDE, GUIDATA, GUIHANDLES
 
-% Edit the above text to modify the response to help dve_rectangleFTEsearch_V3
+% Edit the above text to modify the response to help dve_rectangleFTEsearch_V4
 
-% Last Modified by GUIDE v2.5 18-Aug-2011 10:30:05
+% Last Modified by GUIDE v2.5 22-Aug-2011 21:43:43
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
 gui_State = struct('gui_Name',       mfilename, ...
                    'gui_Singleton',  gui_Singleton, ...
-                   'gui_OpeningFcn', @dve_rectangleFTEsearch_V3_OpeningFcn, ...
-                   'gui_OutputFcn',  @dve_rectangleFTEsearch_V3_OutputFcn, ...
+                   'gui_OpeningFcn', @dve_rectangleFTEsearch_V4_OpeningFcn, ...
+                   'gui_OutputFcn',  @dve_rectangleFTEsearch_V4_OutputFcn, ...
                    'gui_LayoutFcn',  [] , ...
                    'gui_Callback',   []);
 if nargin && ischar(varargin{1})
@@ -44,15 +44,15 @@ end
 % End initialization code - DO NOT EDIT
 
 
-% --- Executes just before dve_rectangleFTEsearch_V3 is made visible.
-function dve_rectangleFTEsearch_V3_OpeningFcn(hObject, eventdata, handles, varargin)
+% --- Executes just before dve_rectangleFTEsearch_V4 is made visible.
+function dve_rectangleFTEsearch_V4_OpeningFcn(hObject, eventdata, handles, varargin)
 % This function has no output args, see OutputFcn.
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-% varargin   command line arguments to dve_rectangleFTEsearch_V3 (see VARARGIN)
+% varargin   command line arguments to dve_rectangleFTEsearch_V4 (see VARARGIN)
 
-% Choose default command line output for dve_rectangleFTEsearch_V3
+% Choose default command line output for dve_rectangleFTEsearch_V4
 handles.output = hObject;
 
 handles.nden=1e6;         %factor for density
@@ -80,12 +80,12 @@ disp(['handles.dhead from OpenFcn=',num2str(handles.dhead)])
 
 guidata(hObject, handles);
 
-% UIWAIT makes dve_rectangleFTEsearch_V3 wait for user response (see UIRESUME)
+% UIWAIT makes dve_rectangleFTEsearch_V4 wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
 
 
 % --- Outputs from this function are returned to the command line.
-function varargout = dve_rectangleFTEsearch_V3_OutputFcn(hObject, eventdata, handles) 
+function varargout = dve_rectangleFTEsearch_V4_OutputFcn(hObject, eventdata, handles) 
 % varargout  cell array for returning output args (see VARARGOUT);
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -169,7 +169,6 @@ text(lef+c2,bot-r1,'xs', 'Fontsize', 12, 'BackgroundColor','w', 'HorizontalAlign
 text(lef+c3,bot-r1,'ys', 'Fontsize', 12, 'BackgroundColor','w', 'HorizontalAlignment', 'right', 'FontWeight', 'Bold', 'Fontangle', 'italic');
 text(lef+c4,bot-r1,'zs', 'Fontsize', 12, 'BackgroundColor','w', 'HorizontalAlignment', 'right', 'FontWeight', 'Bold', 'Fontangle', 'italic');
 text(lef+c5,bot-r1,'V0', 'Fontsize', 12, 'BackgroundColor','w', 'HorizontalAlignment', 'right', 'FontWeight', 'Bold', 'Fontangle', 'italic');
-
 text(lef+c2,bot-r2,num2str(handles.xs(1),'%1.3f'), 'Fontsize', 10, 'BackgroundColor','w', 'HorizontalAlignment', 'right');
 text(lef+c2,bot-r3,num2str(handles.xs(2),'%1.3f'), 'Fontsize', 10, 'BackgroundColor','w', 'HorizontalAlignment', 'right');
 text(lef+c2,bot-r4,num2str(handles.xs(3),'%1.3f'), 'Fontsize', 10, 'BackgroundColor','w', 'HorizontalAlignment', 'right');
@@ -183,11 +182,9 @@ text(lef+c5,bot-r2,num2str(handles.V0(1),'%3.1f'), 'Fontsize', 10, 'BackgroundCo
 text(lef+c5,bot-r3,num2str(handles.V0(2),'%3.1f'), 'Fontsize', 10, 'BackgroundColor','w', 'HorizontalAlignment', 'right');
 text(lef+c5,bot-r4,num2str(handles.V0(3),'%3.1f'), 'Fontsize', 10, 'BackgroundColor','w', 'HorizontalAlignment', 'right');
 text(lef+c2,top+up,[heada,' / ',headb],'Fontname','arial','Fontsize',10,'BackgroundColor','w','HorizontalAlignment','left');
-% text(lef+c1,top+up,headb,'Fontname','arial','Fontsize',10,'BackgroundColor','w','HorizontalAlignment','left');
-
 fig = gcf;
-    pcolor(handles.x*handles.L0,handles.y(handles.gg)*handles.L0,handles.B3);            % displays 3rd axis (bz) in faceted shading
-    shading interp                       % changes shading to interpolated
+%     pcolor(handles.x*handles.L0,handles.y(handles.gg)*handles.L0,handles.B3);            % displays 3rd axis (bz) in faceted shading
+%     shading interp                       % changes shading to interpolated
     minb3=min(min(handles.B3));
     maxb3=max(max(handles.B3));
     caxis([minb3 maxb3]);

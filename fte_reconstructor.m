@@ -1,35 +1,35 @@
-function varargout = dve_rectangleFTEsearch_V5(varargin)
-% DVE_RECTANGLEFTESEARCH_V5 MATLAB code for dve_rectangleFTEsearch_V5.fig
-%      DVE_RECTANGLEFTESEARCH_V5, by itself, creates a new DVE_RECTANGLEFTESEARCH_V5 or raises the existing
+function varargout = dve_rectangleFTEsearch_V6(varargin)
+% DVE_RECTANGLEFTESEARCH_V6 MATLAB code for dve_rectangleFTEsearch_V6.fig
+%      DVE_RECTANGLEFTESEARCH_V6, by itself, creates a new DVE_RECTANGLEFTESEARCH_V6 or raises the existing
 %      singleton*.
 %
-%      H = DVE_RECTANGLEFTESEARCH_V5 returns the handle to a new DVE_RECTANGLEFTESEARCH_V5 or the handle to
+%      H = DVE_RECTANGLEFTESEARCH_V6 returns the handle to a new DVE_RECTANGLEFTESEARCH_V6 or the handle to
 %      the existing singleton*.
 %
-%      DVE_RECTANGLEFTESEARCH_V5('CALLBACK',hObject,eventData,handles,...) calls the local
-%      function named CALLBACK in DVE_RECTANGLEFTESEARCH_V5.M with the given input arguments.
+%      DVE_RECTANGLEFTESEARCH_V6('CALLBACK',hObject,eventData,handles,...) calls the local
+%      function named CALLBACK in DVE_RECTANGLEFTESEARCH_V6.M with the given input arguments.
 %
-%      DVE_RECTANGLEFTESEARCH_V5('Property','Value',...) creates a new DVE_RECTANGLEFTESEARCH_V5 or raises the
+%      DVE_RECTANGLEFTESEARCH_V6('Property','Value',...) creates a new DVE_RECTANGLEFTESEARCH_V6 or raises the
 %      existing singleton*.  Starting from the left, property value pairs are
-%      applied to the GUI before dve_rectangleFTEsearch_V5_OpeningFcn gets called.  An
+%      applied to the GUI before dve_rectangleFTEsearch_V6_OpeningFcn gets called.  An
 %      unrecognized property name or invalid value makes property application
-%      stop.  All inputs are passed to dve_rectangleFTEsearch_V5_OpeningFcn via varargin.
+%      stop.  All inputs are passed to dve_rectangleFTEsearch_V6_OpeningFcn via varargin.
 %
 %      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
 %      instance to run (singleton)".
 %
 % See also: GUIDE, GUIDATA, GUIHANDLES
 
-% Edit the above text to modify the response to help dve_rectangleFTEsearch_V5
+% Edit the above text to modify the response to help dve_rectangleFTEsearch_V6
 
-% Last Modified by GUIDE v2.5 26-Aug-2011 23:25:09
+% Last Modified by GUIDE v2.5 28-Aug-2011 14:08:29
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
 gui_State = struct('gui_Name',       mfilename, ...
                    'gui_Singleton',  gui_Singleton, ...
-                   'gui_OpeningFcn', @dve_rectangleFTEsearch_V5_OpeningFcn, ...
-                   'gui_OutputFcn',  @dve_rectangleFTEsearch_V5_OutputFcn, ...
+                   'gui_OpeningFcn', @dve_rectangleFTEsearch_V6_OpeningFcn, ...
+                   'gui_OutputFcn',  @dve_rectangleFTEsearch_V6_OutputFcn, ...
                    'gui_LayoutFcn',  [] , ...
                    'gui_Callback',   []);
 if nargin && ischar(varargin{1})
@@ -44,15 +44,15 @@ end
 % End initialization code - DO NOT EDIT
 
 
-% --- Executes just before dve_rectangleFTEsearch_V5 is made visible.
-function dve_rectangleFTEsearch_V5_OpeningFcn(hObject, eventdata, handles, varargin)
+% --- Executes just before dve_rectangleFTEsearch_V6 is made visible.
+function dve_rectangleFTEsearch_V6_OpeningFcn(hObject, eventdata, handles, varargin)
 % This function has no output args, see OutputFcn.
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-% varargin   command line arguments to dve_rectangleFTEsearch_V5 (see VARARGIN)
+% varargin   command line arguments to dve_rectangleFTEsearch_V6 (see VARARGIN)
 
-% Choose default command line output for dve_rectangleFTEsearch_V5
+% Choose default command line output for dve_rectangleFTEsearch_V6
 handles.output = hObject;
 
 handles.nden=1e6;         %factor for density
@@ -80,12 +80,12 @@ disp(['handles.dhead from OpenFcn=',num2str(handles.dhead)])
 
 guidata(hObject, handles);
 
-% UIWAIT makes dve_rectangleFTEsearch_V5 wait for user response (see UIRESUME)
+% UIWAIT makes dve_rectangleFTEsearch_V6 wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
 
 
 % --- Outputs from this function are returned to the command line.
-function varargout = dve_rectangleFTEsearch_V5_OutputFcn(hObject, eventdata, handles) 
+function varargout = dve_rectangleFTEsearch_V6_OutputFcn(hObject, eventdata, handles) 
 % varargout  cell array for returning output args (see VARARGOUT);
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -93,7 +93,6 @@ function varargout = dve_rectangleFTEsearch_V5_OutputFcn(hObject, eventdata, han
 
 % Get default command line output from handles structure
 varargout{1} = handles.output;
-
 
 function btn_dphiup_Callback(hObject, eventdata, handles)
 handles.dphi=handles.dphi+handles.azi;
@@ -126,7 +125,8 @@ function btn_prev_Callback(hObject, eventdata, handles)
 
 %=============================== Save Button ========================================
 function btn_save_Callback(hObject, eventdata, handles)
-hgsave(handles.axes1,'handles.axes1.sav');
+figpos = [1, 1, 800,600];
+fig2=figure('Name', 'fig2','Position',figpos,'NumberTitle','off', 'Renderer', 'Zbuffer','RendererMode','manual');
 dnm = num2str([handles.yr,handles.month,handles.day]);
 thnm = num2str(round(handles.theta));
 phnm = num2str(round(handles.phi));
@@ -134,15 +134,11 @@ tmnm1 = datestr(handles.ta);
 tmnm2 = datestr(handles.tb);
 heada = ['TH',upper(handles.sc),': ',handles.doy,': ',tmnm1(12:20),' to ', tmnm2(12:20)];
 headb = strcat('Theta = ', num2str(handles.theta, '%3.2f'),', Phi = ', num2str(handles.phi, '%3.2f'));
-figpos = [1, 1, 800,600];
-outpos = [1, 1, 900,700];
-figure(2,'Position',figpos);
-hgload('handles.axes1.sav');
+plotstuff(hObject,eventdata,handles);
 handles.axesSave=gca;
 set(handles.axesSave,'Units','pixels');
 axpos=[80,220,400,200];
 set(handles.axesSave,'Position',axpos);
-disp(' ')
 disp(['axpos=',num2str(axpos)])
 top = max(handles.y*handles.L0);
 bot = min(handles.y*handles.L0);
@@ -182,9 +178,6 @@ text(lef+c5,bot-r2,num2str(handles.V0(1),'%3.1f'), 'Fontsize', 10, 'BackgroundCo
 text(lef+c5,bot-r3,num2str(handles.V0(2),'%3.1f'), 'Fontsize', 10, 'BackgroundColor','w', 'HorizontalAlignment', 'right');
 text(lef+c5,bot-r4,num2str(handles.V0(3),'%3.1f'), 'Fontsize', 10, 'BackgroundColor','w', 'HorizontalAlignment', 'right');
 text(lef+c2,top+up,[heada,' / ',headb],'Fontname','arial','Fontsize',10,'BackgroundColor','w','HorizontalAlignment','left');
-fig = gcf;
-%     pcolor(handles.x*handles.L0,handles.y(handles.gg)*handles.L0,handles.B3);            % displays 3rd axis (bz) in faceted shading
-%     shading interp                       % changes shading to interpolated
     minb3=min(min(handles.B3));
     maxb3=max(max(handles.B3));
     caxis([minb3 maxb3]);
@@ -192,9 +185,13 @@ fig = gcf;
     set(handles.zbar,'Fontsize',8);
     set(get(handles.zbar,'XLabel'),'String','Bz [nT]','Rotation',0,'HorizontalAlignment','left','Fontsize',10);
 filename = ['gsmap_','th',handles.sc,'_',dnm,'_',tmnm1(13:14),tmnm1(16:17),tmnm1(19:20),'_',tmnm2(13:14),tmnm2(16:17),tmnm2(19:20),'_theta',thnm,'_phi',phnm,'.png'];
-saveas(fig,filename,'png');
+
+
+print(fig2,'-dpng',filename,'-r600');
+
+% saveas(fig2,filename,'png');
 disp(['File saved as ', filename])
-close(figure(fig));
+close(figure(fig2));
 
 %========================== Load Button ===============================
 function btn_load_Callback(hObject, eventdata, handles)
@@ -230,7 +227,14 @@ function btn_load_Callback(hObject, eventdata, handles)
 
 
     disp('===========================Begin LOAD Button Data=================================')
-    dir = 'C:\Users\Eriksson\My Documents\MATLAB\';
+    
+    ostest = ismac
+    if ostest == 1
+      dir = '~/Documents/MATLAB/';
+    else
+      dir = 'C:\Users\Eriksson\My Documents\MATLAB\';
+    end
+    
     HHi = sscanf(handles.ti,'%2c%0.2*4c');
     MMi = sscanf(handles.ti, '%*3c%2c0%*2c', 2);
     SSi = sscanf(handles.ti, '%*6c%2c0', 2);
@@ -572,7 +576,7 @@ function btn_display_Callback(hObject, eventdata, handles)
     handles.hafx = handles.xmax*0.5;
     handles.hafy = handles.ymax*0.5;
     guidata(hObject, handles);
-
+    %  disp('B Vector Magnitudes are', num2str(sqrt(handles.bc(:,1).^2+handles.bc(:,2).^2)))
     %-- call plot function
     plotstuff(hObject,eventdata,handles);
     disp('')

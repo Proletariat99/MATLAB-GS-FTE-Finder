@@ -1,35 +1,35 @@
-function varargout = dve_rectangleFTEsearch_V2(varargin)
-% DVE_RECTANGLEFTESEARCH_V2 MATLAB code for dve_rectangleFTEsearch_V2.fig
-%      DVE_RECTANGLEFTESEARCH_V2, by itself, creates a new DVE_RECTANGLEFTESEARCH_V2 or raises the existing
+function varargout = dve_rectangleFTEsearch_V3(varargin)
+% DVE_RECTANGLEFTESEARCH_V3 MATLAB code for dve_rectangleFTEsearch_V3.fig
+%      DVE_RECTANGLEFTESEARCH_V3, by itself, creates a new DVE_RECTANGLEFTESEARCH_V3 or raises the existing
 %      singleton*.
 %
-%      H = DVE_RECTANGLEFTESEARCH_V2 returns the handle to a new DVE_RECTANGLEFTESEARCH_V2 or the handle to
+%      H = DVE_RECTANGLEFTESEARCH_V3 returns the handle to a new DVE_RECTANGLEFTESEARCH_V3 or the handle to
 %      the existing singleton*.
 %
-%      DVE_RECTANGLEFTESEARCH_V2('CALLBACK',hObject,eventData,handles,...) calls the local
-%      function named CALLBACK in DVE_RECTANGLEFTESEARCH_V2.M with the given input arguments.
+%      DVE_RECTANGLEFTESEARCH_V3('CALLBACK',hObject,eventData,handles,...) calls the local
+%      function named CALLBACK in DVE_RECTANGLEFTESEARCH_V3.M with the given input arguments.
 %
-%      DVE_RECTANGLEFTESEARCH_V2('Property','Value',...) creates a new DVE_RECTANGLEFTESEARCH_V2 or raises the
+%      DVE_RECTANGLEFTESEARCH_V3('Property','Value',...) creates a new DVE_RECTANGLEFTESEARCH_V3 or raises the
 %      existing singleton*.  Starting from the left, property value pairs are
-%      applied to the GUI before dve_rectangleFTEsearch_V2_OpeningFcn gets called.  An
+%      applied to the GUI before dve_rectangleFTEsearch_V3_OpeningFcn gets called.  An
 %      unrecognized property name or invalid value makes property application
-%      stop.  All inputs are passed to dve_rectangleFTEsearch_V2_OpeningFcn via varargin.
+%      stop.  All inputs are passed to dve_rectangleFTEsearch_V3_OpeningFcn via varargin.
 %
 %      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
 %      instance to run (singleton)".
 %
 % See also: GUIDE, GUIDATA, GUIHANDLES
 
-% Edit the above text to modify the response to help dve_rectangleFTEsearch_V2
+% Edit the above text to modify the response to help dve_rectangleFTEsearch_V3
 
-% Last Modified by GUIDE v2.5 17-Aug-2011 14:27:18
+% Last Modified by GUIDE v2.5 18-Aug-2011 10:30:05
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
 gui_State = struct('gui_Name',       mfilename, ...
                    'gui_Singleton',  gui_Singleton, ...
-                   'gui_OpeningFcn', @dve_rectangleFTEsearch_V2_OpeningFcn, ...
-                   'gui_OutputFcn',  @dve_rectangleFTEsearch_V2_OutputFcn, ...
+                   'gui_OpeningFcn', @dve_rectangleFTEsearch_V3_OpeningFcn, ...
+                   'gui_OutputFcn',  @dve_rectangleFTEsearch_V3_OutputFcn, ...
                    'gui_LayoutFcn',  [] , ...
                    'gui_Callback',   []);
 if nargin && ischar(varargin{1})
@@ -44,15 +44,15 @@ end
 % End initialization code - DO NOT EDIT
 
 
-% --- Executes just before dve_rectangleFTEsearch_V2 is made visible.
-function dve_rectangleFTEsearch_V2_OpeningFcn(hObject, eventdata, handles, varargin)
+% --- Executes just before dve_rectangleFTEsearch_V3 is made visible.
+function dve_rectangleFTEsearch_V3_OpeningFcn(hObject, eventdata, handles, varargin)
 % This function has no output args, see OutputFcn.
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-% varargin   command line arguments to dve_rectangleFTEsearch_V2 (see VARARGIN)
+% varargin   command line arguments to dve_rectangleFTEsearch_V3 (see VARARGIN)
 
-% Choose default command line output for dve_rectangleFTEsearch_V2
+% Choose default command line output for dve_rectangleFTEsearch_V3
 handles.output = hObject;
 
 handles.nden=1e6;         %factor for density
@@ -80,12 +80,12 @@ disp(['handles.dhead from OpenFcn=',num2str(handles.dhead)])
 
 guidata(hObject, handles);
 
-% UIWAIT makes dve_rectangleFTEsearch_V2 wait for user response (see UIRESUME)
+% UIWAIT makes dve_rectangleFTEsearch_V3 wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
 
 
 % --- Outputs from this function are returned to the command line.
-function varargout = dve_rectangleFTEsearch_V2_OutputFcn(hObject, eventdata, handles) 
+function varargout = dve_rectangleFTEsearch_V3_OutputFcn(hObject, eventdata, handles) 
 % varargout  cell array for returning output args (see VARARGOUT);
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -127,9 +127,15 @@ function btn_prev_Callback(hObject, eventdata, handles)
 %=============================== Save Button ========================================
 function btn_save_Callback(hObject, eventdata, handles)
 hgsave(handles.axes1,'handles.axes1.sav');
+dnm = num2str([handles.yr,handles.month,handles.day]);
+thnm = num2str(round(handles.theta));
+phnm = num2str(round(handles.phi));
+tmnm1 = datestr(handles.ta);
+tmnm2 = datestr(handles.tb);
+heada = ['TH',upper(handles.sc),': ',handles.doy,': ',tmnm1(12:20),' to ', tmnm2(12:20)];
+headb = strcat('Theta = ', num2str(handles.theta, '%3.2f'),', Phi = ', num2str(handles.phi, '%3.2f'));
 figpos = [1, 1, 800,600];
-% outpos = [1, 1, 900,700];
-% figure('Position',figpos, 'OuterPosition', outpos);
+outpos = [1, 1, 900,700];
 figure('Position',figpos);
 hgload('handles.axes1.sav');
 handles.axesSave=gca;
@@ -137,45 +143,57 @@ set(handles.axesSave,'Units','pixels');
 axpos=[80,220,400,200];
 set(handles.axesSave,'Position',axpos);
 disp(' ')
-txt_titlex=uicontrol(gcf,'Style','text','Position',[10,170,30,13],'Fontsize',11,'String','x:','BackgroundColor','w','HorizontalAlignment','left');
-txt_titley=uicontrol(gcf,'Style','text','Position',[10,155,30,13],'Fontsize',11,'String','y:','BackgroundColor','w','HorizontalAlignment','left');
-txt_titlez=uicontrol(gcf,'Style','text','Position',[10,140,30,13],'Fontsize',11,'String','z:','BackgroundColor','w','HorizontalAlignment','left');
-txt_titlexs=uicontrol(gcf,'Style','text','Position',[30,185,30,13],'Fontsize',11,'String','xs','BackgroundColor','w');
-txt_titleys=uicontrol(gcf,'Style','text','Position',[65,185,30,13],'Fontsize',11,'String','ys','BackgroundColor','w');
-txt_titlezs=uicontrol(gcf,'Style','text','Position',[100,185,30,13],'Fontsize',11,'String','zs','BackgroundColor','w');
-txt_titlev0=uicontrol(gcf,'Style','text','Position',[140,185,30,13],'Fontsize',11,'String','V0','BackgroundColor','w');
-handles.txt_savexx=uicontrol(gcf,'Style','text','Position',[30,170,30,13],'Fontsize',11,'String','x.xxx','BackgroundColor','w','HorizontalAlignment','left');
-handles.txt_savexy=uicontrol(gcf,'Style','text','Position',[30,155,30,13],'Fontsize',11,'String','x.xxx','BackgroundColor','w','HorizontalAlignment','left');
-handles.txt_savexz=uicontrol(gcf,'Style','text','Position',[30,140,30,13],'Fontsize',11,'String','x.xxx','BackgroundColor','w','HorizontalAlignment','left');
-handles.txt_saveyx=uicontrol(gcf,'Style','text','Position',[65,170,30,13],'Fontsize',11,'String','x.xxx','BackgroundColor','w','HorizontalAlignment','left');
-handles.txt_saveyy=uicontrol(gcf,'Style','text','Position',[65,155,30,13],'Fontsize',11,'String','x.xxx','BackgroundColor','w','HorizontalAlignment','left');
-handles.txt_saveyz=uicontrol(gcf,'Style','text','Position',[65,140,30,13],'Fontsize',11,'String','x.xxx','BackgroundColor','w','HorizontalAlignment','left');
-handles.txt_savezx=uicontrol(gcf,'Style','text','Position',[100,170,30,13],'Fontsize',11,'String','x.xxx','BackgroundColor','w','HorizontalAlignment','left');
-handles.txt_savezy=uicontrol(gcf,'Style','text','Position',[100,155,30,13],'Fontsize',11,'String','x.xxx','BackgroundColor','w','HorizontalAlignment','left');
-handles.txt_savezz=uicontrol(gcf,'Style','text','Position',[100,140,30,13],'Fontsize',11,'String','x.xxx','BackgroundColor','w','HorizontalAlignment','left');
-handles.txt_savev0x=uicontrol(gcf,'Style','text','Position',[140,170,30,13],'Fontsize',11,'String','x.xxx','BackgroundColor','w','HorizontalAlignment','left');
-handles.txt_savev0y=uicontrol(gcf,'Style','text','Position',[140,155,30,13],'Fontsize',11,'String','x.xxx','BackgroundColor','w','HorizontalAlignment','left');
-handles.txt_savev0z=uicontrol(gcf,'Style','text','Position',[140,140,30,13],'Fontsize',11,'String','x.xxx','BackgroundColor','w','HorizontalAlignment','left');
-% set(uicontrol(handles.txt_savephi),'String',num2str(handles.savephi, '%3.1f  '));
-% set(uicontrol(handles.txt_savetheta),'String',num2str(handles.savetheta, '%3.1f  '));
-set(uicontrol(handles.txt_savezx),'String',num2str(handles.zs(1),'%1.3f'));
-set(uicontrol(handles.txt_savezy),'String',num2str(handles.zs(2),'%1.3f'));
-set(uicontrol(handles.txt_savezz),'String',num2str(handles.zs(3),'%1.3f'));
-set(uicontrol(handles.txt_savexx),'String',num2str(handles.xs(1),'%1.3f'));
-set(uicontrol(handles.txt_savexy),'String',num2str(handles.xs(2),'%1.3f'));
-set(uicontrol(handles.txt_savexz),'String',num2str(handles.xs(3),'%1.3f'));
-set(uicontrol(handles.txt_saveyx),'String',num2str(handles.ys(1),'%1.3f'));
-set(uicontrol(handles.txt_saveyy),'String',num2str(handles.ys(2),'%1.3f'));
-set(uicontrol(handles.txt_saveyz),'String',num2str(handles.ys(3),'%1.3f'));
-set(uicontrol(handles.txt_savev0x),'String',num2str(handles.V0(1), '%3.1f  '));
-set(uicontrol(handles.txt_savev0y),'String',num2str(handles.V0(2), '%3.1f  '));
-set(uicontrol(handles.txt_savev0z),'String',num2str(handles.V0(3), '%3.1f  '));
+disp(['axpos=',num2str(axpos)])
+top = max(handles.y*handles.L0);
+bot = min(handles.y*handles.L0);
+lef = min(handles.x*handles.L0);
+rit = max(handles.x*handles.L0);
+up = 100
+down = 100
+left = -650
+hspace = 450;
+vspace = 200;
+r1 = 2*vspace+down;
+r2 = 3*vspace+down;
+r3 = 4*vspace+down;
+r4 = 5*vspace+down;
+c1 = 1*hspace+left;
+c2 = 2*hspace+left;
+c3 = 3*hspace+left;
+c4 = 4*hspace+left;
+c5 = 5*hspace+left;
+text(lef+c1,bot-r2,'x:', 'Fontsize', 12, 'BackgroundColor','w', 'HorizontalAlignment', 'right');
+text(lef+c1,bot-r3,'y:', 'Fontsize', 12, 'BackgroundColor','w', 'HorizontalAlignment', 'right');
+text(lef+c1,bot-r4,'z:', 'Fontsize', 12, 'BackgroundColor','w', 'HorizontalAlignment', 'right');
+text(lef+c2,bot-r1,'xs', 'Fontsize', 12, 'BackgroundColor','w', 'HorizontalAlignment', 'right', 'FontWeight', 'Bold', 'Fontangle', 'italic');
+text(lef+c3,bot-r1,'ys', 'Fontsize', 12, 'BackgroundColor','w', 'HorizontalAlignment', 'right', 'FontWeight', 'Bold', 'Fontangle', 'italic');
+text(lef+c4,bot-r1,'zs', 'Fontsize', 12, 'BackgroundColor','w', 'HorizontalAlignment', 'right', 'FontWeight', 'Bold', 'Fontangle', 'italic');
+text(lef+c5,bot-r1,'V0', 'Fontsize', 12, 'BackgroundColor','w', 'HorizontalAlignment', 'right', 'FontWeight', 'Bold', 'Fontangle', 'italic');
+
+text(lef+c2,bot-r2,num2str(handles.xs(1),'%1.3f'), 'Fontsize', 10, 'BackgroundColor','w', 'HorizontalAlignment', 'right');
+text(lef+c2,bot-r3,num2str(handles.xs(2),'%1.3f'), 'Fontsize', 10, 'BackgroundColor','w', 'HorizontalAlignment', 'right');
+text(lef+c2,bot-r4,num2str(handles.xs(3),'%1.3f'), 'Fontsize', 10, 'BackgroundColor','w', 'HorizontalAlignment', 'right');
+text(lef+c3,bot-r2,num2str(handles.ys(1),'%1.3f'), 'Fontsize', 10, 'BackgroundColor','w', 'HorizontalAlignment', 'right');
+text(lef+c3,bot-r3,num2str(handles.ys(2),'%1.3f'), 'Fontsize', 10, 'BackgroundColor','w', 'HorizontalAlignment', 'right');
+text(lef+c3,bot-r4,num2str(handles.ys(3),'%1.3f'), 'Fontsize', 10, 'BackgroundColor','w', 'HorizontalAlignment', 'right');
+text(lef+c4,bot-r2,num2str(handles.zs(1),'%1.3f'), 'Fontsize', 10, 'BackgroundColor','w', 'HorizontalAlignment', 'right');
+text(lef+c4,bot-r3,num2str(handles.zs(2),'%1.3f'), 'Fontsize', 10, 'BackgroundColor','w', 'HorizontalAlignment', 'right');
+text(lef+c4,bot-r4,num2str(handles.zs(3),'%1.3f'), 'Fontsize', 10, 'BackgroundColor','w', 'HorizontalAlignment', 'right');
+text(lef+c5,bot-r2,num2str(handles.V0(1),'%3.1f'), 'Fontsize', 10, 'BackgroundColor','w', 'HorizontalAlignment', 'right');
+text(lef+c5,bot-r3,num2str(handles.V0(2),'%3.1f'), 'Fontsize', 10, 'BackgroundColor','w', 'HorizontalAlignment', 'right');
+text(lef+c5,bot-r4,num2str(handles.V0(3),'%3.1f'), 'Fontsize', 10, 'BackgroundColor','w', 'HorizontalAlignment', 'right');
+text(lef+c2,top+up,[heada,' / ',headb],'Fontname','arial','Fontsize',10,'BackgroundColor','w','HorizontalAlignment','left');
+% text(lef+c1,top+up,headb,'Fontname','arial','Fontsize',10,'BackgroundColor','w','HorizontalAlignment','left');
+
 fig = gcf;
-dnm = num2str([handles.yr,handles.month,handles.day]);
-thnm = num2str(round(handles.theta));
-phnm = num2str(round(handles.phi));
-tmnm1 = datestr(handles.ta);
-tmnm2 = datestr(handles.tb);
+    pcolor(handles.x*handles.L0,handles.y(handles.gg)*handles.L0,handles.B3);            % displays 3rd axis (bz) in faceted shading
+    shading interp                       % changes shading to interpolated
+    minb3=min(min(handles.B3));
+    maxb3=max(max(handles.B3));
+    caxis([minb3 maxb3]);
+    handles.zbar=colorbar('vertical');
+    set(handles.zbar,'Fontsize',8);
+    set(get(handles.zbar,'XLabel'),'String','Bz [nT]','Rotation',0,'HorizontalAlignment','left','Fontsize',10);
 filename = ['gsmap_','th',handles.sc,'_',dnm,'_',tmnm1(13:14),tmnm1(16:17),tmnm1(19:20),'_',tmnm2(13:14),tmnm2(16:17),tmnm2(19:20),'_theta',thnm,'_phi',phnm,'.png'];
 saveas(fig,filename,'png');
 disp(['File saved as ', filename])
@@ -561,7 +579,7 @@ function btn_display_Callback(hObject, eventdata, handles)
     %-- call plot function
     plotstuff(hObject,eventdata,handles);
     disp('')
-
+    disp(strcat(handles.doy,'; nev=',num2str(handles.nev),'; ny=',num2str(handles.ny),'; w=', num2str(handles.w),'; dtheta=',num2str(handles.dtheta),'; dphi=',num2str(handles.dphi)))
 
 function btn_exit_Callback(hObject, eventdata, handles)
 gca;
@@ -810,8 +828,8 @@ function plotstuff(hObject, eventdata,handles)
     Aupdy(handles.mid,:)=Aupdy(handles.mid,:)/2;
     Aupdx=Aupdx+Adndx;
     Aupdx(handles.mid,:)=Aupdx(handles.mid,:)/2;
-    gg=1:handles.ny;
-    Bzup=zeros(handles.ny,handles.nx);
+    handles.gg=1:handles.ny;
+    handles.Bzup=zeros(handles.ny,handles.nx);
     for j=1:handles.ny
       for i=1:handles.nx
         Bzup(j,i)=polyval(handles.fZ1,Aup(j,i));
@@ -822,17 +840,17 @@ function plotstuff(hObject, eventdata,handles)
         end
       end
     end
-    B3 = Bzup(gg,:)*handles.b0*1e9;              % defines 3rd axis
-    pcolor(handles.x*handles.L0,handles.y(gg)*handles.L0,B3);            % displays 3rd axis (bz) in faceted shading
+    handles.B3 = Bzup(handles.gg,:)*handles.b0*1e9;              % defines 3rd axis
+    pcolor(handles.x*handles.L0,handles.y(handles.gg)*handles.L0,handles.B3);            % displays 3rd axis (bz) in faceted shading
     shading interp                       % changes shading to interpolated
-    minb3=min(min(B3));
-    maxb3=max(max(B3));
+    minb3=min(min(handles.B3));
+    maxb3=max(max(handles.B3));
     caxis([minb3 maxb3]);
     handles.zbar=colorbar('vertical');
     set(handles.zbar,'Fontsize',8);
     set(get(handles.zbar,'XLabel'),'String','Bz [nT]','Rotation',0,'HorizontalAlignment','left','Fontsize',10);
     hold on;
-    [cc,hh]=contour(handles.x*handles.L0,handles.y(gg)*handles.L0,Aup(gg,:),[-4:0.11:4],'k');
+    [cc,hh]=contour(handles.x*handles.L0,handles.y(handles.gg)*handles.L0,Aup(handles.gg,:),[-4:0.11:4],'k');
     set(hh,'linewidth',1.0);
     quiv1=quiver(handles.xa0,zeros(1,handles.ndata),handles.bxs',handles.bys',0.3,'w');  % plots white arrows accross middle.
     set(quiv1,'linewidth',2.0);                          % sets linewidth for quiver arrows

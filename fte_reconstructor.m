@@ -1,35 +1,35 @@
-function varargout = dve_rectangleFTEsearch_V1(varargin)
-% DVE_RECTANGLEFTESEARCH_V1 MATLAB code for dve_rectangleFTEsearch_V1.fig
-%      DVE_RECTANGLEFTESEARCH_V1, by itself, creates a new DVE_RECTANGLEFTESEARCH_V1 or raises the existing
+function varargout = dve_rectangleFTEsearch_V2(varargin)
+% DVE_RECTANGLEFTESEARCH_V2 MATLAB code for dve_rectangleFTEsearch_V2.fig
+%      DVE_RECTANGLEFTESEARCH_V2, by itself, creates a new DVE_RECTANGLEFTESEARCH_V2 or raises the existing
 %      singleton*.
 %
-%      H = DVE_RECTANGLEFTESEARCH_V1 returns the handle to a new DVE_RECTANGLEFTESEARCH_V1 or the handle to
+%      H = DVE_RECTANGLEFTESEARCH_V2 returns the handle to a new DVE_RECTANGLEFTESEARCH_V2 or the handle to
 %      the existing singleton*.
 %
-%      DVE_RECTANGLEFTESEARCH_V1('CALLBACK',hObject,eventData,handles,...) calls the local
-%      function named CALLBACK in DVE_RECTANGLEFTESEARCH_V1.M with the given input arguments.
+%      DVE_RECTANGLEFTESEARCH_V2('CALLBACK',hObject,eventData,handles,...) calls the local
+%      function named CALLBACK in DVE_RECTANGLEFTESEARCH_V2.M with the given input arguments.
 %
-%      DVE_RECTANGLEFTESEARCH_V1('Property','Value',...) creates a new DVE_RECTANGLEFTESEARCH_V1 or raises the
+%      DVE_RECTANGLEFTESEARCH_V2('Property','Value',...) creates a new DVE_RECTANGLEFTESEARCH_V2 or raises the
 %      existing singleton*.  Starting from the left, property value pairs are
-%      applied to the GUI before dve_rectangleFTEsearch_V1_OpeningFcn gets called.  An
+%      applied to the GUI before dve_rectangleFTEsearch_V2_OpeningFcn gets called.  An
 %      unrecognized property name or invalid value makes property application
-%      stop.  All inputs are passed to dve_rectangleFTEsearch_V1_OpeningFcn via varargin.
+%      stop.  All inputs are passed to dve_rectangleFTEsearch_V2_OpeningFcn via varargin.
 %
 %      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
 %      instance to run (singleton)".
 %
 % See also: GUIDE, GUIDATA, GUIHANDLES
 
-% Edit the above text to modify the response to help dve_rectangleFTEsearch_V1
+% Edit the above text to modify the response to help dve_rectangleFTEsearch_V2
 
-% Last Modified by GUIDE v2.5 16-Aug-2011 19:05:03
+% Last Modified by GUIDE v2.5 17-Aug-2011 14:27:18
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
 gui_State = struct('gui_Name',       mfilename, ...
                    'gui_Singleton',  gui_Singleton, ...
-                   'gui_OpeningFcn', @dve_rectangleFTEsearch_V1_OpeningFcn, ...
-                   'gui_OutputFcn',  @dve_rectangleFTEsearch_V1_OutputFcn, ...
+                   'gui_OpeningFcn', @dve_rectangleFTEsearch_V2_OpeningFcn, ...
+                   'gui_OutputFcn',  @dve_rectangleFTEsearch_V2_OutputFcn, ...
                    'gui_LayoutFcn',  [] , ...
                    'gui_Callback',   []);
 if nargin && ischar(varargin{1})
@@ -44,15 +44,15 @@ end
 % End initialization code - DO NOT EDIT
 
 
-% --- Executes just before dve_rectangleFTEsearch_V1 is made visible.
-function dve_rectangleFTEsearch_V1_OpeningFcn(hObject, eventdata, handles, varargin)
+% --- Executes just before dve_rectangleFTEsearch_V2 is made visible.
+function dve_rectangleFTEsearch_V2_OpeningFcn(hObject, eventdata, handles, varargin)
 % This function has no output args, see OutputFcn.
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-% varargin   command line arguments to dve_rectangleFTEsearch_V1 (see VARARGIN)
+% varargin   command line arguments to dve_rectangleFTEsearch_V2 (see VARARGIN)
 
-% Choose default command line output for dve_rectangleFTEsearch_V1
+% Choose default command line output for dve_rectangleFTEsearch_V2
 handles.output = hObject;
 
 handles.nden=1e6;         %factor for density
@@ -80,12 +80,12 @@ disp(['handles.dhead from OpenFcn=',num2str(handles.dhead)])
 
 guidata(hObject, handles);
 
-% UIWAIT makes dve_rectangleFTEsearch_V1 wait for user response (see UIRESUME)
+% UIWAIT makes dve_rectangleFTEsearch_V2 wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
 
 
 % --- Outputs from this function are returned to the command line.
-function varargout = dve_rectangleFTEsearch_V1_OutputFcn(hObject, eventdata, handles) 
+function varargout = dve_rectangleFTEsearch_V2_OutputFcn(hObject, eventdata, handles) 
 % varargout  cell array for returning output args (see VARARGOUT);
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -121,30 +121,73 @@ guidata(hObject, handles);
 
 function btn_next_Callback(hObject, eventdata, handles)
 
-
 function btn_prev_Callback(hObject, eventdata, handles)
 % PREV AND NEXT don't do anything yet.  
 
+%=============================== Save Button ========================================
 function btn_save_Callback(hObject, eventdata, handles)
+hgsave(handles.axes1,'handles.axes1.sav');
+figpos = [1, 1, 800,600];
+% outpos = [1, 1, 900,700];
+% figure('Position',figpos, 'OuterPosition', outpos);
+figure('Position',figpos);
+hgload('handles.axes1.sav');
+handles.axesSave=gca;
+set(handles.axesSave,'Units','pixels');
+axpos=[80,220,400,200];
+set(handles.axesSave,'Position',axpos);
+disp(' ')
+txt_titlex=uicontrol(gcf,'Style','text','Position',[10,170,30,13],'Fontsize',11,'String','x:','BackgroundColor','w','HorizontalAlignment','left');
+txt_titley=uicontrol(gcf,'Style','text','Position',[10,155,30,13],'Fontsize',11,'String','y:','BackgroundColor','w','HorizontalAlignment','left');
+txt_titlez=uicontrol(gcf,'Style','text','Position',[10,140,30,13],'Fontsize',11,'String','z:','BackgroundColor','w','HorizontalAlignment','left');
+txt_titlexs=uicontrol(gcf,'Style','text','Position',[30,185,30,13],'Fontsize',11,'String','xs','BackgroundColor','w');
+txt_titleys=uicontrol(gcf,'Style','text','Position',[65,185,30,13],'Fontsize',11,'String','ys','BackgroundColor','w');
+txt_titlezs=uicontrol(gcf,'Style','text','Position',[100,185,30,13],'Fontsize',11,'String','zs','BackgroundColor','w');
+txt_titlev0=uicontrol(gcf,'Style','text','Position',[140,185,30,13],'Fontsize',11,'String','V0','BackgroundColor','w');
+handles.txt_savexx=uicontrol(gcf,'Style','text','Position',[30,170,30,13],'Fontsize',11,'String','x.xxx','BackgroundColor','w','HorizontalAlignment','left');
+handles.txt_savexy=uicontrol(gcf,'Style','text','Position',[30,155,30,13],'Fontsize',11,'String','x.xxx','BackgroundColor','w','HorizontalAlignment','left');
+handles.txt_savexz=uicontrol(gcf,'Style','text','Position',[30,140,30,13],'Fontsize',11,'String','x.xxx','BackgroundColor','w','HorizontalAlignment','left');
+handles.txt_saveyx=uicontrol(gcf,'Style','text','Position',[65,170,30,13],'Fontsize',11,'String','x.xxx','BackgroundColor','w','HorizontalAlignment','left');
+handles.txt_saveyy=uicontrol(gcf,'Style','text','Position',[65,155,30,13],'Fontsize',11,'String','x.xxx','BackgroundColor','w','HorizontalAlignment','left');
+handles.txt_saveyz=uicontrol(gcf,'Style','text','Position',[65,140,30,13],'Fontsize',11,'String','x.xxx','BackgroundColor','w','HorizontalAlignment','left');
+handles.txt_savezx=uicontrol(gcf,'Style','text','Position',[100,170,30,13],'Fontsize',11,'String','x.xxx','BackgroundColor','w','HorizontalAlignment','left');
+handles.txt_savezy=uicontrol(gcf,'Style','text','Position',[100,155,30,13],'Fontsize',11,'String','x.xxx','BackgroundColor','w','HorizontalAlignment','left');
+handles.txt_savezz=uicontrol(gcf,'Style','text','Position',[100,140,30,13],'Fontsize',11,'String','x.xxx','BackgroundColor','w','HorizontalAlignment','left');
+handles.txt_savev0x=uicontrol(gcf,'Style','text','Position',[140,170,30,13],'Fontsize',11,'String','x.xxx','BackgroundColor','w','HorizontalAlignment','left');
+handles.txt_savev0y=uicontrol(gcf,'Style','text','Position',[140,155,30,13],'Fontsize',11,'String','x.xxx','BackgroundColor','w','HorizontalAlignment','left');
+handles.txt_savev0z=uicontrol(gcf,'Style','text','Position',[140,140,30,13],'Fontsize',11,'String','x.xxx','BackgroundColor','w','HorizontalAlignment','left');
+% set(uicontrol(handles.txt_savephi),'String',num2str(handles.savephi, '%3.1f  '));
+% set(uicontrol(handles.txt_savetheta),'String',num2str(handles.savetheta, '%3.1f  '));
+set(uicontrol(handles.txt_savezx),'String',num2str(handles.zs(1),'%1.3f'));
+set(uicontrol(handles.txt_savezy),'String',num2str(handles.zs(2),'%1.3f'));
+set(uicontrol(handles.txt_savezz),'String',num2str(handles.zs(3),'%1.3f'));
+set(uicontrol(handles.txt_savexx),'String',num2str(handles.xs(1),'%1.3f'));
+set(uicontrol(handles.txt_savexy),'String',num2str(handles.xs(2),'%1.3f'));
+set(uicontrol(handles.txt_savexz),'String',num2str(handles.xs(3),'%1.3f'));
+set(uicontrol(handles.txt_saveyx),'String',num2str(handles.ys(1),'%1.3f'));
+set(uicontrol(handles.txt_saveyy),'String',num2str(handles.ys(2),'%1.3f'));
+set(uicontrol(handles.txt_saveyz),'String',num2str(handles.ys(3),'%1.3f'));
+set(uicontrol(handles.txt_savev0x),'String',num2str(handles.V0(1), '%3.1f  '));
+set(uicontrol(handles.txt_savev0y),'String',num2str(handles.V0(2), '%3.1f  '));
+set(uicontrol(handles.txt_savev0z),'String',num2str(handles.V0(3), '%3.1f  '));
 fig = gcf;
-        anm = num2str(handles.azi);
-        pnm = num2str(round(handles.pol));
-        dnm = num2str([handles.yr,'_',handles.month,'_',handles.day]);
-        thnm = num2str(round(handles.theta));
-        phnm = num2str(round(handles.phi));
-        tmnm = num2str([handles.ta,'to',handles.tb]);
-        filename = [anm,'a',pnm,'p',thnm, 'th', phnm, 'ph', dnm,'_',tmnm, '.png'];
-        saveas(fig,filename,'png');
-        disp(['File saved as ', filename])
-        
+dnm = num2str([handles.yr,handles.month,handles.day]);
+thnm = num2str(round(handles.theta));
+phnm = num2str(round(handles.phi));
+tmnm1 = datestr(handles.ta);
+tmnm2 = datestr(handles.tb);
+filename = ['gsmap_','th',handles.sc,'_',dnm,'_',tmnm1(13:14),tmnm1(16:17),tmnm1(19:20),'_',tmnm2(13:14),tmnm2(16:17),tmnm2(19:20),'_theta',thnm,'_phi',phnm,'.png'];
+saveas(fig,filename,'png');
+disp(['File saved as ', filename])
+close(figure(fig));
         
 %========================== Load Button ===============================
 function btn_load_Callback(hObject, eventdata, handles)
     if isfield(handles,'etxt_w') == 0
-      handles=catstruct(handles.guihandles);
+      handles=catstruct(handles,guihandles);
     end
-    guidata(hObject, handles);
-    
+    guidata(hObject, handles);    
+
     if isfield(handles, 'dhead') == 0
       handles.nden=1e6;         %factor for density
       handles.nt  =1e6;         %factor for temperature
@@ -260,12 +303,12 @@ function btn_load_Callback(hObject, eventdata, handles)
         secs=handles.secs;
         dwa = secs(ns1);   
         dwb = secs(ns2);
-        fdna = addtodate(dni,dwa,'second');
-        fdnb = addtodate(dni,dwb,'second');
-        disp(['fdna = ',fdna])
-        disp(['fdnb = ',fdnb])
-        handles.ta=fdna;
-        handles.tb=fdnb;
+        handles.fdna = addtodate(dni,dwa,'second');
+        handles.fdnb = addtodate(dni,dwb,'second');
+        disp(['fdna = ',handles.fdna])
+        disp(['fdnb = ',handles.fdnb])
+        handles.ta=handles.fdna;
+        handles.tb=handles.fdnb;
 %================%
 % TIME STUFF END %
 %================%
@@ -320,48 +363,55 @@ function btn_load_Callback(hObject, eventdata, handles)
     set(uicontrol(handles.txt_v0y),'String',num2str(handles.V0(2), '%3.1f  '));
     set(uicontrol(handles.txt_v0z),'String',num2str(handles.V0(3), '%3.1f  '));
     
-    headera = strcat('FTE start: ',datestr(fdna), ' NEV: ', num2str(handles.nev),', w:', num2str(handles.w), ', ny:', num2str(handles.ny));
-    headerb = strcat('FTE stop: ',datestr(fdnb), ', sc:', handles.sc, ', src:', handles.src);
-    set(uicontrol(handles.txt_headera),'String',headera);
-    set(uicontrol(handles.txt_headerb),'String',headerb);
+    handles.headera = strcat('FTE start: ',datestr(handles.fdna), ' NEV: ', num2str(handles.nev),', w:', num2str(handles.w), ', ny:', num2str(handles.ny));
+    handles.headerb = strcat('FTE stop: ',datestr(handles.fdnb), ', sc:', handles.sc, ', src:', handles.src);
+    set(uicontrol(handles.txt_headera),'String',handles.headera);
+    set(uicontrol(handles.txt_headerb),'String',handles.headerb);
     guidata(hObject, handles);
     disp('======================= End Load Function ===================')
     
 %========================== Display Button ============================
 function btn_display_Callback(hObject, eventdata, handles)
-axes(handles.axes1);
-cla(handles.axes1);
-disp('==================== 1st Coordinate Transform Data ====================')
-disp('Transforming zs from GSM to local, using MVAB Kbint value')
-vza=handles.V0*handles.zs0';
-vzav=vza*handles.zs0;
-vhtsv=handles.V0-vzav;
-vhts=sqrt(vhtsv*vhtsv');
-vhtsn=vhtsv./vhts;
-handles.xs0=-vhtsn;
-handles.ys0=cross(handles.zs0,handles.xs0);
-handles.ys0=handles.ys0./norm(handles.ys0);
-disp(' ')
-nxtest=sind(handles.theta0)*cosd(handles.phi0);
-nytest=sind(handles.theta0)*sind(handles.phi0);
-nztest=cosd(handles.theta0);
-guidata(hObject, handles);
-disp(['nxtest = ', num2str(nxtest)])
-disp(['nytest = ', num2str(nytest)])
-disp(['nytest = ', num2str(nytest)])
-disp(['Starting xs (from V0) = ', num2str(handles.xs0, ' %3.3f')])
-disp(['Starting ys (from X product) = ', num2str(handles.ys0, ' %3.3f')])
-disp(['Starting zs (from MVAB Kbint) = ', num2str(handles.zs0, ' %3.3f')])
-disp(['Dot Product of xs & ys = ', num2str(handles.xs0*handles.ys0')])
-disp(['Dot Product of zs & xs = ', num2str(handles.zs0*handles.xs0')])
-disp(['Dot Product of ys & zs = ', num2str(handles.ys0*handles.zs0')])
-disp('Getting adjustment angles for next rotation...')
-disp('==================== End 1st Coordinate Transform  ====================')
-disp(' ')
-disp(' ')
-disp('=================== 2nd Coordinate Transform ======================')
+    % --- Update Headers
+    handles.headera = strcat('FTE start: ',datestr(handles.fdna), ' NEV: ', num2str(handles.nev),', w:', num2str(handles.w), ', ny:', num2str(handles.ny));
+    handles.headerb = strcat('FTE stop: ',datestr(handles.fdnb), ', sc:', handles.sc, ', src:', handles.src);
+    set(uicontrol(handles.txt_headera),'String',handles.headera);
+    set(uicontrol(handles.txt_headerb),'String',handles.headerb);
+    guidata(hObject, handles);
+    % --- Populate GUI
+    axes(handles.axes1);
+    cla(handles.axes1);
+    disp('==================== 1st Coordinate Transform Data ====================')
+    disp('Transforming zs from GSM to local, using MVAB Kbint value')
+    vza=handles.V0*handles.zs0';
+    vzav=vza*handles.zs0;
+    vhtsv=handles.V0-vzav;
+    vhts=sqrt(vhtsv*vhtsv');
+    vhtsn=vhtsv./vhts;
+    handles.xs0=-vhtsn;
+    handles.ys0=cross(handles.zs0,handles.xs0);
+    handles.ys0=handles.ys0./norm(handles.ys0);
+    disp(' ')
+    nxtest=sind(handles.theta0)*cosd(handles.phi0);
+    nytest=sind(handles.theta0)*sind(handles.phi0);
+    nztest=cosd(handles.theta0);
+    guidata(hObject, handles);
+    disp(['nxtest = ', num2str(nxtest)])
+    disp(['nytest = ', num2str(nytest)])
+    disp(['nytest = ', num2str(nytest)])
+    disp(['Starting xs (from V0) = ', num2str(handles.xs0, ' %3.3f')])
+    disp(['Starting ys (from X product) = ', num2str(handles.ys0, ' %3.3f')])
+    disp(['Starting zs (from MVAB Kbint) = ', num2str(handles.zs0, ' %3.3f')])
+    disp(['Dot Product of xs & ys = ', num2str(handles.xs0*handles.ys0')])
+    disp(['Dot Product of zs & xs = ', num2str(handles.zs0*handles.xs0')])
+    disp(['Dot Product of ys & zs = ', num2str(handles.ys0*handles.zs0')])
+    disp('Getting adjustment angles for next rotation...')
+    disp('==================== End 1st Coordinate Transform  ====================')
+    disp(' ')
+    disp(' ')
+    disp('=================== 2nd Coordinate Transform ======================')
 
-% --- get updated angles from interface bold text in "Manual Adjust" Panel
+    % --- get updated angles from interface bold text in "Manual Adjust" Panel
     handles.dphi = str2double(get(uicontrol(handles.txt_dphi), 'String')); 
     handles.dtheta = str2double(get(uicontrol(handles.txt_dtheta), 'String')); 
     %------ set handles.phi and handles.theta ----------
@@ -382,133 +432,135 @@ disp('=================== 2nd Coordinate Transform ======================')
     handles.xs=-vhtsn;
     handles.ys=cross(handles.zs,handles.xs);
     handles.ys=handles.ys./norm(handles.ys);
- 
- 
     guidata(hObject, handles);
-disp(['Final xs after all Xforms = ', num2str(handles.xs,' %2.3f')])
-disp(['Final ys after all Xforms = ', num2str(handles.ys,' %2.3f')])
-disp(['Final zs after all Xforms = ', num2str(handles.zs,' %2.3f')])
-disp(' ')
-disp('--------- Orthogonal Test (should be very close to 0.0) ---------')
-disp(['xs dot ys =', num2str(handles.xs*handles.ys')])
-disp(['ys dot zs =', num2str(handles.ys*handles.zs')])
-disp(['xs dot zs =', num2str(handles.xs*handles.zs')])
-disp(' ')
-set(uicontrol(handles.txt_dphi),'String',num2str(handles.dphi, '%3.1f  '));
-set(uicontrol(handles.txt_dtheta),'String',num2str(handles.dtheta, '%3.1f  '));
-set(uicontrol(handles.etxt_dphi),'String',num2str(handles.dphi, '%3.1f  '));
-set(uicontrol(handles.etxt_dtheta),'String',num2str(handles.dtheta, '%3.1f  '));
-set(uicontrol(handles.txt_zsx),'String',num2str(handles.zs(1),'%1.3f'));
-set(uicontrol(handles.txt_zsy),'String',num2str(handles.zs(2),'%1.3f'));
-set(uicontrol(handles.txt_zsz),'String',num2str(handles.zs(3),'%1.3f'));
-set(uicontrol(handles.txt_xsx),'String',num2str(handles.xs(1),'%1.3f'));
-set(uicontrol(handles.txt_xsy),'String',num2str(handles.xs(2),'%1.3f'));
-set(uicontrol(handles.txt_xsz),'String',num2str(handles.xs(3),'%1.3f'));
-set(uicontrol(handles.txt_cphi),'String',num2str(handles.phi, '%3.1f  '));
-set(uicontrol(handles.txt_ctheta),'String',num2str(handles.theta, '%3.1f  '));
-handles.dTim1 = handles.secs(handles.i1:handles.i2)-handles.secs(handles.i1);               % my code (dd, 2011)
+    disp(['Final xs after all Xforms = ', num2str(handles.xs,' %2.3f')])
+    disp(['Final ys after all Xforms = ', num2str(handles.ys,' %2.3f')])
+    disp(['Final zs after all Xforms = ', num2str(handles.zs,' %2.3f')])
+    disp(' ')
+    disp('--------- Orthogonal Test (should be very close to 0.0) ---------')
+    disp(['xs dot ys =', num2str(handles.xs*handles.ys')])
+    disp(['ys dot zs =', num2str(handles.ys*handles.zs')])
+    disp(['xs dot zs =', num2str(handles.xs*handles.zs')])
+    disp(' ')
+    set(uicontrol(handles.txt_dphi),'String',num2str(handles.dphi, '%3.1f  '));
+    set(uicontrol(handles.txt_dtheta),'String',num2str(handles.dtheta, '%3.1f  '));
+    set(uicontrol(handles.etxt_dphi),'String',num2str(handles.dphi, '%3.1f  '));
+    set(uicontrol(handles.etxt_dtheta),'String',num2str(handles.dtheta, '%3.1f  '));
+    set(uicontrol(handles.txt_zsx),'String',num2str(handles.zs(1),'%1.3f'));
+    set(uicontrol(handles.txt_zsy),'String',num2str(handles.zs(2),'%1.3f'));
+    set(uicontrol(handles.txt_zsz),'String',num2str(handles.zs(3),'%1.3f'));
+    set(uicontrol(handles.txt_xsx),'String',num2str(handles.xs(1),'%1.3f'));
+    set(uicontrol(handles.txt_xsy),'String',num2str(handles.xs(2),'%1.3f'));
+    set(uicontrol(handles.txt_xsz),'String',num2str(handles.xs(3),'%1.3f'));
+    set(uicontrol(handles.txt_ysx),'String',num2str(handles.ys(1),'%1.3f'));
+    set(uicontrol(handles.txt_ysy),'String',num2str(handles.ys(2),'%1.3f'));
+    set(uicontrol(handles.txt_ysz),'String',num2str(handles.ys(3),'%1.3f'));
+    set(uicontrol(handles.txt_cphi),'String',num2str(handles.phi, '%3.1f  '));
+    set(uicontrol(handles.txt_ctheta),'String',num2str(handles.theta, '%3.1f  '));
+    handles.dTim1 = handles.secs(handles.i1:handles.i2)-handles.secs(handles.i1);               % my code (dd, 2011)
 
-% project B into reconstruction coord.
-handles.bxs=(handles.bc.*handles.nb)*handles.xs';
-handles.bys=(handles.bc.*handles.nb)*handles.ys';
-handles.bzs=(handles.bc.*handles.nb)*handles.zs';
-handles.vxs = -handles.V0*handles.xs';
-handles.xa0=handles.vxs.*handles.dTim1;
-handles.iix = handles.i1:handles.i2;
-handles.dzn=handles.Nx(handles.iix);                    % density reconstruction by matrix
-handles.Tp = handles.Tx(handles.iix)/handles.kb2;
-%Project V into reconstruction coord.
-vxc=zeros(1,handles.ndata);
-vyc=zeros(1,handles.ndata);
-vzc=zeros(1,handles.ndata);
-for i=1:handles.ndata
-  vxc(i)=(handles.vp(i,:)-handles.V0)*handles.xs';
-  vyc(i)=(handles.vp(i,:)-handles.V0)*handles.ys';
-  vzc(i)=(handles.vp(i,:)-handles.V0)*handles.zs';
-end
+    % project B into reconstruction coord.
+    handles.bxs=(handles.bc.*handles.nb)*handles.xs';
+    handles.bys=(handles.bc.*handles.nb)*handles.ys';
+    handles.bzs=(handles.bc.*handles.nb)*handles.zs';
+    handles.vxs = -handles.V0*handles.xs';
+    handles.xa0=handles.vxs.*handles.dTim1;
+    handles.iix = handles.i1:handles.i2;
+    handles.dzn=handles.Nx(handles.iix);                    % density reconstruction by matrix
+    handles.Tp = handles.Tx(handles.iix)/handles.kb2;
+    %Project V into reconstruction coord.
+    vxc=zeros(1,handles.ndata);
+    vyc=zeros(1,handles.ndata);
+    vzc=zeros(1,handles.ndata);
+    for i=1:handles.ndata
+      vxc(i)=(handles.vp(i,:)-handles.V0)*handles.xs';
+      vyc(i)=(handles.vp(i,:)-handles.V0)*handles.ys';
+      vzc(i)=(handles.vp(i,:)-handles.V0)*handles.zs';
+    end
 
-% avplx=mean(vxc);
-% avply=mean(vyc);
-% avplz=mean(vzc);
-% set(uicontrol(handles.txt_ysx), 'String',num2str(avplx, '%3.1f'));
-% set(uicontrol(handles.txt_ysy),'String',num2str(avply, '%3.1f '));
-% set(uicontrol(handles.txt_ysz),'String',num2str(avplz, '%3.1f '));
+    % avplx=mean(vxc);
+    % avply=mean(vyc);
+    % avplz=mean(vzc);
+    % set(uicontrol(handles.txt_ysx), 'String',num2str(avplx, '%3.1f'));
+    % set(uicontrol(handles.txt_ysy),'String',num2str(avply, '%3.1f '));
+    % set(uicontrol(handles.txt_ysz),'String',num2str(avplz, '%3.1f '));
 
-zsx = strcat(num2str(handles.zs(1),'%1.3f'),',');
-zsy = strcat(num2str(handles.zs(2),'%1.3f'),',');
-zsz = num2str(handles.zs(3),'%1.3f');
-disp(strcat('(zsx,zsy,zsz)=(',zsx,zsy,zsz,')'));
-if exist('v0gsm')==1,
-  disp(strcat('v0gsm=',num2str(v0gsm)));
-end
+    zsx = strcat(num2str(handles.zs(1),'%1.3f'),',');
+    zsy = strcat(num2str(handles.zs(2),'%1.3f'),',');
+    zsz = num2str(handles.zs(3),'%1.3f');
+    disp(strcat('(zsx,zsy,zsz)=(',zsx,zsy,zsz,')'));
+    if exist('v0gsm')==1,
+      disp(strcat('v0gsm=',num2str(v0gsm)));
+    end
 
-%Calculate vector potential A along y=0
-ndA=zeros(1,handles.lenb);
-for i=2:handles.lenb                       %
-  ndA(i)=-(handles.bys(i)+handles.bys(i-1))*(handles.dTim1(i)-handles.dTim1(i-1))*handles.vxs*handles.nv*0.5;  % Determines A for different
-end
-A1=cumsum(ndA);                   % Area: cumulative sum.  every iteration, we add more area
-A1=A1';                           % transpose A1
-bb=sqrt(handles.bxs.^2+handles.bys.^2+handles.bzs.^2);  % magnitude of total bfield 
-pp=handles.dzn.*handles.Tp*handles.kb*handles.nden;     % new pp factor (without nt)
-bmax=max(bb);                                           % maximum b magnitude
-nmax=max(handles.dzn)*handles.nden;                     % density maximum value
-%Normalized factors
-handles.b0=bmax;                                        % b0 = max total b magnitude
-p0=bmax*bmax/handles.miu;                               % max pressure value
-n0=nmax;                                                % max density value from 5 lines above.
-vv0=sqrt(handles.b0^2/(handles.miu*n0*handles.mp)*1e-6);% max b field divided by max density & constants
-A0=max(abs(A1));                                        % A0 = maximum Area Value
-handles.L0=(A0/bmax)*1e-3;                              % L0 = average B/unit area
-disp(['L0=',num2str(handles.L0)])                       % disp L0
-handles.pbz=pp./p0+((handles.bzs./handles.b0).^2)/2;    % pbz = magnetic pressure in bz?
-handles.An=A1./A0;                                      % normalizes range of area from 0 to 1
-guidata(hObject, handles);
-handles.amax1=max(handles.An);                          % max normalized value (1)
-handles.amin1=min(handles.An);                          % min normalized value (0)
-handles.fS1=polyfit(handles.An,handles.pbz,4);          %Pt(A)   
-handles.fZ1=polyfit(handles.An,handles.bzs/handles.b0,5); %Bz(A)
-%--interpolation--%
-handles.nx=handles.ndata+(handles.ndata-1)*3;               % is this just an approximation for distance?
-handles.xi=handles.xa0(1):(handles.xa0(handles.ndata)-handles.xa0(1))/(handles.nx-1):handles.xa0(handles.ndata);
-bxi=interp1(handles.xa0,handles.bxs./handles.b0,handles.xi,'spline');
-byi=interp1(handles.xa0,handles.bys./handles.b0,handles.xi,'spline');
-ht=0;
-py=0.1/1;
-handles.mid=round(handles.ny/2)+ht;
-handles.x=handles.xi./handles.L0;
-guidata(hObject,handles);
-hx=handles.x(2)-handles.x(1);%uniform grids
-hy=py*hx;
-handles.y = zeros(1,handles.ny);
-for j=1:handles.ny
-  handles.y(j)=(j-handles.mid)*hy;
-end
-%---------------------------%
-clear('ndA');
-ndA(1)=0;
-for i=2:handles.nx
-  ndA(i)=-(byi(i)+byi(i-1))*(handles.x(i)-handles.x(i-1))*0.5;
-end
-A2=cumsum(ndA);
-handles.u=zeros(handles.ny,handles.nx);
-handles.udy=zeros(handles.ny,handles.nx);
-handles.udx=zeros(handles.ny,handles.nx);
-handles.u(handles.mid,:)=A2;
-handles.udy(handles.mid,:)=bxi;
-handles.udx(handles.mid,:)=byi;
-handles.c1=[handles.nx handles.ny handles.mid hx hy handles.amax1 handles.amin1];
-%--plot limits--
-handles.ymin = min(handles.y*handles.L0);
-handles.ymax = max(handles.y*handles.L0);
-handles.xmin = min(handles.x*handles.L0);
-handles.xmax = max(handles.x*handles.L0);
-handles.hafx = handles.xmax*0.5;
-handles.hafy = handles.ymax*0.5;
-guidata(hObject, handles);
+    %Calculate vector potential A along y=0
+    ndA=zeros(1,handles.lenb);
+    for i=2:handles.lenb                       %
+      ndA(i)=-(handles.bys(i)+handles.bys(i-1))*(handles.dTim1(i)-handles.dTim1(i-1))*handles.vxs*handles.nv*0.5;  % Determines A for different
+    end
+    A1=cumsum(ndA);                   % Area: cumulative sum.  every iteration, we add more area
+    A1=A1';                           % transpose A1
+    bb=sqrt(handles.bxs.^2+handles.bys.^2+handles.bzs.^2);  % magnitude of total bfield 
+    pp=handles.dzn.*handles.Tp*handles.kb*handles.nden;     % new pp factor (without nt)
+    bmax=max(bb);                                           % maximum b magnitude
+    nmax=max(handles.dzn)*handles.nden;                     % density maximum value
+    %Normalized factors
+    handles.b0=bmax;                                        % b0 = max total b magnitude
+    p0=bmax*bmax/handles.miu;                               % max pressure value
+    n0=nmax;                                                % max density value from 5 lines above.
+    vv0=sqrt(handles.b0^2/(handles.miu*n0*handles.mp)*1e-6);% max b field divided by max density & constants
+    A0=max(abs(A1));                                        % A0 = maximum Area Value
+    handles.L0=(A0/bmax)*1e-3;                              % L0 = average B/unit area
+    disp(['L0=',num2str(handles.L0)])                       % disp L0
+    handles.pbz=pp./p0+((handles.bzs./handles.b0).^2)/2;    % pbz = magnetic pressure in bz?
+    handles.An=A1./A0;                                      % normalizes range of area from 0 to 1
+    guidata(hObject, handles);
+    handles.amax1=max(handles.An);                          % max normalized value (1)
+    handles.amin1=min(handles.An);                          % min normalized value (0)
+    handles.fS1=polyfit(handles.An,handles.pbz,4);          %Pt(A)   
+    handles.fZ1=polyfit(handles.An,handles.bzs/handles.b0,5); %Bz(A)
+    %--interpolation--%
+    handles.nx=handles.ndata+(handles.ndata-1)*3;               % is this just an approximation for distance?
+    handles.xi=handles.xa0(1):(handles.xa0(handles.ndata)-handles.xa0(1))/(handles.nx-1):handles.xa0(handles.ndata);
+    bxi=interp1(handles.xa0,handles.bxs./handles.b0,handles.xi,'spline');
+    byi=interp1(handles.xa0,handles.bys./handles.b0,handles.xi,'spline');
+    ht=0;
+    py=0.1/1;
+    handles.mid=round(handles.ny/2)+ht;
+    handles.x=handles.xi./handles.L0;
+    guidata(hObject,handles);
+    hx=handles.x(2)-handles.x(1);%uniform grids
+    hy=py*hx;
+    handles.y = zeros(1,handles.ny);
+    for j=1:handles.ny
+      handles.y(j)=(j-handles.mid)*hy;
+    end
+    %---------------------------%
+    clear('ndA');
+    ndA(1)=0;
+    for i=2:handles.nx
+      ndA(i)=-(byi(i)+byi(i-1))*(handles.x(i)-handles.x(i-1))*0.5;
+    end
+    A2=cumsum(ndA);
+    handles.u=zeros(handles.ny,handles.nx);
+    handles.udy=zeros(handles.ny,handles.nx);
+    handles.udx=zeros(handles.ny,handles.nx);
+    handles.u(handles.mid,:)=A2;
+    handles.udy(handles.mid,:)=bxi;
+    handles.udx(handles.mid,:)=byi;
+    handles.c1=[handles.nx handles.ny handles.mid hx hy handles.amax1 handles.amin1];
+    %--plot limits--
+    handles.ymin = min(handles.y*handles.L0);
+    handles.ymax = max(handles.y*handles.L0);
+    handles.xmin = min(handles.x*handles.L0);
+    handles.xmax = max(handles.x*handles.L0);
+    handles.hafx = handles.xmax*0.5;
+    handles.hafy = handles.ymax*0.5;
+    guidata(hObject, handles);
 
-%-- call plot function
-plotstuff(hObject,eventdata,handles);
+    %-- call plot function
+    plotstuff(hObject,eventdata,handles);
+    disp('')
 
 
 function btn_exit_Callback(hObject, eventdata, handles)
@@ -776,9 +828,9 @@ function plotstuff(hObject, eventdata,handles)
     minb3=min(min(B3));
     maxb3=max(max(B3));
     caxis([minb3 maxb3]);
-    zbar=colorbar('vertical');
-    set(zbar,'Fontsize',8);
-    set(get(zbar,'XLabel'),'String','Bz [nT]','Rotation',0,'HorizontalAlignment','left','Fontsize',10);
+    handles.zbar=colorbar('vertical');
+    set(handles.zbar,'Fontsize',8);
+    set(get(handles.zbar,'XLabel'),'String','Bz [nT]','Rotation',0,'HorizontalAlignment','left','Fontsize',10);
     hold on;
     [cc,hh]=contour(handles.x*handles.L0,handles.y(gg)*handles.L0,Aup(gg,:),[-4:0.11:4],'k');
     set(hh,'linewidth',1.0);
@@ -795,7 +847,7 @@ function plotstuff(hObject, eventdata,handles)
     end
     xlabel('x [km]','fontsize',12)
     ylabel('y [km]','fontsize',12)
-
+    guidata(hObject, handles);
 
 function etxt_ny_Callback(hObject, eventdata, handles)
 handles.ny=str2double(get(hObject,'String'));

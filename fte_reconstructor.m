@@ -1,35 +1,35 @@
-function varargout = dve_rectangleFTEsearch_V9_2(varargin)
-% DVE_RECTANGLEFTESEARCH_V9_2 MATLAB code for dve_rectangleFTEsearch_V9_2.fig
-%      DVE_RECTANGLEFTESEARCH_V9_2, by itself, creates a new DVE_RECTANGLEFTESEARCH_V9_2 or raises the existing
+function varargout = dve_rectangleFTEsearch_V9_3(varargin)
+% DVE_RECTANGLEFTESEARCH_V9_3 MATLAB code for dve_rectangleFTEsearch_V9_3.fig
+%      DVE_RECTANGLEFTESEARCH_V9_3, by itself, creates a new DVE_RECTANGLEFTESEARCH_V9_3 or raises the existing
 %      singleton*.
 %
-%      H = DVE_RECTANGLEFTESEARCH_V9_2 returns the handle to a new DVE_RECTANGLEFTESEARCH_V9_2 or the handle to
+%      H = DVE_RECTANGLEFTESEARCH_V9_3 returns the handle to a new DVE_RECTANGLEFTESEARCH_V9_3 or the handle to
 %      the existing singleton*.
 %
-%      DVE_RECTANGLEFTESEARCH_V9_2('CALLBACK',hObject,eventData,handles,...) calls the local
-%      function named CALLBACK in DVE_RECTANGLEFTESEARCH_V9_2.M with the given input arguments.
+%      DVE_RECTANGLEFTESEARCH_V9_3('CALLBACK',hObject,eventData,handles,...) calls the local
+%      function named CALLBACK in DVE_RECTANGLEFTESEARCH_V9_3.M with the given input arguments.
 %
-%      DVE_RECTANGLEFTESEARCH_V9_2('Property','Value',...) creates a new DVE_RECTANGLEFTESEARCH_V9_2 or raises the
+%      DVE_RECTANGLEFTESEARCH_V9_3('Property','Value',...) creates a new DVE_RECTANGLEFTESEARCH_V9_3 or raises the
 %      existing singleton*.  Starting from the left, property value pairs are
-%      applied to the GUI before dve_rectangleFTEsearch_V9_2_OpeningFcn gets called.  An
+%      applied to the GUI before dve_rectangleFTEsearch_V9_3_OpeningFcn gets called.  An
 %      unrecognized property name or invalid value makes property application
-%      stop.  All inputs are passed to dve_rectangleFTEsearch_V9_2_OpeningFcn via varargin.
+%      stop.  All inputs are passed to dve_rectangleFTEsearch_V9_3_OpeningFcn via varargin.
 %
 %      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
 %      instance to run (singleton)".
 %
 % See also: GUIDE, GUIDATA, GUIHANDLES
 
-% Edit the above text to modify the response to help dve_rectangleFTEsearch_V9_2
+% Edit the above text to modify the response to help dve_rectangleFTEsearch_V9_3
 
-% Last Modified by GUIDE v2.5 21-May-2012 16:01:50
+% Last Modified by GUIDE v2.5 22-May-2012 22:34:07
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
 gui_State = struct('gui_Name',       mfilename, ...
                    'gui_Singleton',  gui_Singleton, ...
-                   'gui_OpeningFcn', @dve_rectangleFTEsearch_V9_2_OpeningFcn, ...
-                   'gui_OutputFcn',  @dve_rectangleFTEsearch_V9_2_OutputFcn, ...
+                   'gui_OpeningFcn', @dve_rectangleFTEsearch_V9_3_OpeningFcn, ...
+                   'gui_OutputFcn',  @dve_rectangleFTEsearch_V9_3_OutputFcn, ...
                    'gui_LayoutFcn',  [] , ...
                    'gui_Callback',   []);
 if nargin && ischar(varargin{1})
@@ -44,15 +44,15 @@ end
 % End initialization code - DO NOT EDIT
 
 
-% --- Executes just before dve_rectangleFTEsearch_V9_2 is made visible.
-function dve_rectangleFTEsearch_V9_2_OpeningFcn(hObject, eventdata, handles, varargin)
+% --- Executes just before dve_rectangleFTEsearch_V9_3 is made visible.
+function dve_rectangleFTEsearch_V9_3_OpeningFcn(hObject, eventdata, handles, varargin)
 % This function has no output args, see OutputFcn.
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-% varargin   command line arguments to dve_rectangleFTEsearch_V9_2 (see VARARGIN)
+% varargin   command line arguments to dve_rectangleFTEsearch_V9_3 (see VARARGIN)
 
-% Choose default command line output for dve_rectangleFTEsearch_V9_2
+% Choose default command line output for dve_rectangleFTEsearch_V9_3
 handles.output = hObject;
 
 handles.nden=1e6;         %factor for density
@@ -80,12 +80,12 @@ disp(['handles.dhead from OpenFcn=',num2str(handles.dhead)])
 
 guidata(hObject, handles);
 
-% UIWAIT makes dve_rectangleFTEsearch_V9_2 wait for user response (see UIRESUME)
+% UIWAIT makes dve_rectangleFTEsearch_V9_3 wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
 
 
 % --- Outputs from this function are returned to the command line.
-function varargout = dve_rectangleFTEsearch_V9_2_OutputFcn(hObject, eventdata, handles) 
+function varargout = dve_rectangleFTEsearch_V9_3_OutputFcn(hObject, eventdata, handles) 
 % varargout  cell array for returning output args (see VARARGOUT);
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -120,94 +120,11 @@ guidata(hObject, handles);
 
 function btn_svpoly_Callback(hObject, eventdata, handles);
 
-
-% ############# Version 7 Workaround Below ################
-%=============================== Save Button ========================================
-% function btn_save_Callback(hObject, eventdata, handles)
-% figpos = [1, 1, 800,600];
-% fig2=figure('Name', 'fig2','Position',figpos,'NumberTitle','off', 'Renderer', 'Zbuffer','RendererMode','manual');
-% dnm = num2str([handles.yr,handles.month,handles.day]);
-% thnm = num2str(round(handles.theta));
-% phnm = num2str(round(handles.phi));
-% tmnm1 = datestr(handles.ta);
-% tmnm2 = datestr(handles.tb);
-% handles.heada = ['TH',upper(handles.sc),': ',handles.doy,': ',tmnm1(12:20),' to ', tmnm2(12:20)];
-% handles.headb = strcat('Theta = ', num2str(handles.theta, '%3.2f'),', Phi = ', num2str(handles.phi, '%3.2f'));
-% 
-% plotstuff(hObject,eventdata,handles);
-% 
-% handles.axesSave1=gca;
-% set(handles.axesSave1,'Units','pixels');
-% axpos=[80,220,400,200];
-% set(handles.axesSave1,'Position',axpos);
-% disp(['axpos=',num2str(axpos)])
-% top = max(handles.y*handles.L0);
-% bot = min(handles.y*handles.L0);
-% lef = min(handles.x*handles.L0);
-% rit = max(handles.x*handles.L0);
-% up = 100;
-% down = 100;
-% left = -650;
-% hspace = 450;
-% vspace = 200;
-% r1 = 2*vspace+down;
-% r2 = 3*vspace+down;
-% r3 = 4*vspace+down;
-% r4 = 5*vspace+down;
-% c1 = 1*hspace+left;
-% c2 = 2*hspace+left;
-% c3 = 3*hspace+left;
-% c4 = 4*hspace+left;
-% c5 = 5*hspace+left;
-% 
-% % ================ VECTOR INFO BELOW (COMMENT OUT FOR PAPER) ============
-% % text(lef+c1,bot-r2,'x:', 'Fontsize', 12, 'BackgroundColor','w', 'HorizontalAlignment', 'right');
-% % text(lef+c1,bot-r3,'y:', 'Fontsize', 12, 'BackgroundColor','w', 'HorizontalAlignment', 'right');
-% % text(lef+c1,bot-r4,'z:', 'Fontsize', 12, 'BackgroundColor','w', 'HorizontalAlignment', 'right');
-% % text(lef+c2,bot-r1,'xs', 'Fontsize', 12, 'BackgroundColor','w', 'HorizontalAlignment', 'right', 'FontWeight', 'Bold', 'Fontangle', 'italic');
-% % text(lef+c3,bot-r1,'ys', 'Fontsize', 12, 'BackgroundColor','w', 'HorizontalAlignment', 'right', 'FontWeight', 'Bold', 'Fontangle', 'italic');
-% % text(lef+c4,bot-r1,'zs', 'Fontsize', 12, 'BackgroundColor','w', 'HorizontalAlignment', 'right', 'FontWeight', 'Bold', 'Fontangle', 'italic');
-% % text(lef+c5,bot-r1,'V0', 'Fontsize', 12, 'BackgroundColor','w', 'HorizontalAlignment', 'right', 'FontWeight', 'Bold', 'Fontangle', 'italic');
-% % text(lef+c2,bot-r2,num2str(handles.xs(1),'%1.3f'), 'Fontsize', 10, 'BackgroundColor','w', 'HorizontalAlignment', 'right');
-% % text(lef+c2,bot-r3,num2str(handles.xs(2),'%1.3f'), 'Fontsize', 10, 'BackgroundColor','w', 'HorizontalAlignment', 'right');
-% % text(lef+c2,bot-r4,num2str(handles.xs(3),'%1.3f'), 'Fontsize', 10, 'BackgroundColor','w', 'HorizontalAlignment', 'right');
-% % text(lef+c3,bot-r2,num2str(handles.ys(1),'%1.3f'), 'Fontsize', 10, 'BackgroundColor','w', 'HorizontalAlignment', 'right');
-% % text(lef+c3,bot-r3,num2str(handles.ys(2),'%1.3f'), 'Fontsize', 10, 'BackgroundColor','w', 'HorizontalAlignment', 'right');
-% % text(lef+c3,bot-r4,num2str(handles.ys(3),'%1.3f'), 'Fontsize', 10, 'BackgroundColor','w', 'HorizontalAlignment', 'right');
-% % text(lef+c4,bot-r2,num2str(handles.zs(1),'%1.3f'), 'Fontsize', 10, 'BackgroundColor','w', 'HorizontalAlignment', 'right');
-% % text(lef+c4,bot-r3,num2str(handles.zs(2),'%1.3f'), 'Fontsize', 10, 'BackgroundColor','w', 'HorizontalAlignment', 'right');
-% % text(lef+c4,bot-r4,num2str(handles.zs(3),'%1.3f'), 'Fontsize', 10, 'BackgroundColor','w', 'HorizontalAlignment', 'right');
-% % text(lef+c5,bot-r2,num2str(handles.V0(1),'%3.1f'), 'Fontsize', 10, 'BackgroundColor','w', 'HorizontalAlignment', 'right');
-% % text(lef+c5,bot-r3,num2str(handles.V0(2),'%3.1f'), 'Fontsize', 10, 'BackgroundColor','w', 'HorizontalAlignment', 'right');
-% % text(lef+c5,bot-r4,num2str(handles.V0(3),'%3.1f'), 'Fontsize', 10, 'BackgroundColor','w', 'HorizontalAlignment', 'right');
-% % ================ VECTOR INFO ABOVE (COMMENT OUT FOR PAPER) ============
-% 
-% 
-% text(lef+c2,top+up,[handles.heada,' / ',handles.headb],'Fontname','arial','Fontsize',10,'BackgroundColor','w','HorizontalAlignment','left');
-%     minb3=min(min(handles.B3));
-%     maxb3=max(max(handles.B3));
-%     caxis([minb3 maxb3]);
-%     handles.zbar=colorbar('vertical');
-%     set(handles.zbar,'Fontsize',8);
-%     set(get(handles.zbar,'XLabel'),'String','Bz [nT]','Rotation',0,'HorizontalAlignment','left','Fontsize',10);
-% filename = [handles.dir,'gsmap_','th',handles.sc,'_',dnm,'_',tmnm1(13:14),tmnm1(16:17),tmnm1(19:20),'_',tmnm2(13:14),tmnm2(16:17),tmnm2(19:20),'_theta',thnm,'_phi',phnm,'.png'];
-% 
-% 
-% print(fig2,'-dpng',filename,'-r600');
-% % cla;
-% % saveas(fig2,filename,'png');
-% disp(['File saved as ', filename])
-% close(figure(fig2));
-% ############# Version 7 Workaround Above ################
-
-
-% ############### Version 9 Save Below ###################
-% ===============For some reason, the following code broke in v9.
-% I replaced with a copy/paste from v7.
-
 function btn_save_Callback(hObject, eventdata, handles)
+% guidata(hObject, handles);
+% set(gcf,'CurrentAxes',handles.axes1)
 figpos = [1, 1, 800,600];
-fig2=figure('Name', 'fig2','Position',figpos,'NumberTitle','off', 'Renderer', 'Zbuffer','RendererMode','manual');
+MainPrintTempFig=figure('Name', 'MainPrintTempFig','Position',figpos,'NumberTitle','on', 'Renderer', 'Zbuffer','RendererMode','manual');
 dnm = num2str([handles.yr,handles.month,handles.day]);
 thnm = num2str(round(handles.theta));
 phnm = num2str(round(handles.phi));
@@ -215,13 +132,13 @@ tmnm1 = datestr(handles.ta);
 tmnm2 = datestr(handles.tb);
 handles.heada = ['TH',upper(handles.sc),': ',handles.doy,': ',tmnm1(12:20),' to ', tmnm2(12:20)];
 handles.headb = strcat('Theta = ', num2str(handles.theta, '%3.2f'),', Phi = ', num2str(handles.phi, '%3.2f'));
-
+%test=exist(handles.B3);
 plotstuff(hObject,eventdata,handles);
+% set(gca,'Tag','axes1')
 handles.axesSave1=gca;
 set(handles.axesSave1,'Units','pixels')
 xlabel(handles.axesSave1,'x[km]');
 ylabel(handles.axesSave1,'y[km]');
-
 axpos=[80,220,400,200];
 set(handles.axesSave1,'Position',axpos);
 disp(['axpos=',num2str(axpos)])
@@ -270,11 +187,11 @@ text(lef+c2,top+up,[handles.heada,' / ',handles.headb],'Fontname','arial','Fonts
     set(handles.zbar,'Fontsize',8);
     set(get(handles.zbar,'XLabel'),'String','Bz [nT]','Rotation',0,'HorizontalAlignment','left','Fontsize',10);
 filename = [handles.dir,'gsmap_','th',handles.sc,'_',dnm,'_',tmnm1(13:14),tmnm1(16:17),tmnm1(19:20),'_',tmnm2(13:14),tmnm2(16:17),tmnm2(19:20),'_theta',thnm,'_phi',phnm,'.png'];
-print(fig2,'-dpng',filename,'-r600');
+print(MainPrintTempFig,'-dpng',filename,'-r600');
 
 % saveas(fig2,filename,'png');
 disp(['File saved as ', filename])
-close(figure(fig2));
+close(figure(MainPrintTempFig));
 % ############### Version 9 Save Above ###################
 
 
@@ -483,8 +400,8 @@ function btn_display_Callback(hObject, eventdata, handles)
     set(uicontrol(handles.txt_headera),'String',handles.headera);
     set(uicontrol(handles.txt_headerb),'String',handles.headerb);
     guidata(hObject, handles);
-    % --- Populate GUI
-%     axes(handles.axes1);
+    % --- Populate GUI 
+%    axes(handles.axes1);
 %     cla(handles.axes1);
     disp('==================== 1st Coordinate Transform Data ====================')
     disp('Transforming zs from GSM to local, using MVAB Kbint value')
@@ -664,7 +581,11 @@ function btn_display_Callback(hObject, eventdata, handles)
     guidata(hObject, handles);
     %  disp('B Vector Magnitudes are', num2str(sqrt(handles.bc(:,1).^2+handles.bc(:,2).^2)))
     %-- call plot function
+    % set(gcf,'CurrentAxes',handles.axes1);
+    %cla(handles.axes1) 
     plotstuff(hObject,eventdata,handles);
+    % set(gcf,'CurrentAxes',handles.axes2);
+    %cla(handles.axes2) 
     polyplot(hObject,eventdata,handles);
     disp('')
     disp(strcat(handles.doy,'; nev=',num2str(handles.nev),'; ny=',num2str(handles.ny),'; w=', num2str(handles.w),'; dtheta=',num2str(handles.dtheta),'; dphi=',num2str(handles.dphi)))
@@ -895,46 +816,83 @@ handles.txt_dtheta=str2double(get(thetaObject,'String'));
 disp(['handles.txt_dtheta from CreateFcn= ',num2str(handles.txt_dtheta)]);
 guidata(thetaObject, handles);
 
-
 function txt_dphi_CreateFcn(phiObject, eventdata, handles)
-handles.txt_dphi=str2double(get(phiObject,'String'));
 handles.txt_dphi=str2double(get(phiObject,'String'));
 disp(['handles.txt_dphi from CreateFcn= ',num2str(handles.txt_dphi)]);
 guidata(phiObject, handles);
 
+function plot_data_calc(hObject,eventdata,handles)
+%save the current handles structure 
+%for the GUI figure 
+[handles.Aup,handles.Aupdx,handles.Aupdx]=gsup(handles.c1,handles.x,handles.y,handles.u,handles.udy,handles.udx,handles.fS1);
+[handles.Adn,handles.Adndy,handles.Adndx]=gsdn(handles.c1,handles.x,handles.y,handles.u,handles.udy,handles.udx,handles.fS1);
+handles.Aup=handles.Aup+handles.Adn;
+handles.Aup(handles.mid,:)=handles.Aup(handles.mid,:)/2;
+handles.Aupdx=handles.Aupdx+handles.Adndy;
+handles.Aupdx(handles.mid,:)=handles.Aupdx(handles.mid,:)/2;
+handles.Aupdx=handles.Aupdx+handles.Adndx;
+handles.Aupdx(handles.mid,:)=handles.Aupdx(handles.mid,:)/2;
+handles.gg=1:handles.ny;
+handles.Bzup=zeros(handles.ny,handles.nx);
+for j=1:handles.ny
+  for i=1:handles.nx
+    handles.Bzup(j,i)=polyval(handles.fZ1,handles.Aup(j,i));            % added handles to bzup
+    if handles.Aup(j,i)>handles.amax1
+      handles.Bzup(j,i)=polyval(handles.fZ1,handles.amax1);     % added handles to bzup
+    elseif handles.Aup(j,i)<handles.amin1
+      handles.Bzup(j,i)=polyval(handles.fZ1,handles.amin1);     % added handles to bzup
+    end
+  end
+end
+handles.B3 = handles.Bzup(handles.gg,:)*handles.b0*1e9;              % defines 3rd axis
+guidata(hObject, handles);
+
+
 %========================== Plot Stuff ===============================
 function plotstuff(hObject, eventdata,handles)
-    %----------------------------------------------------------------------------%
-    %=============================== SubBlock 1 =================================%
-    %----------------------------------------------------------------------------%
-    cla(handles.axes1,'reset')
-    set(gcf,'CurrentAxes',handles.axes1); 
+% Plotstuff only actually plots the main axes (called axes1) which is the 
+% window with the magnetic field lines and contour plot and vectors.
+% The other window with the poly fit (axes2) is plotted by the function
+% polyplot
+
+%__________________Troubleshooting Section_________________________________
+
+childnums = get(gcf,'Children');
+disp(strcat('childnums=', num2str(childnums)));
+tags = get(childnums, 'Tag');
+disp(tags)
+disp('')
+%__________________END_____________________________________________________
+
+    %cla(handles.axes1,'reset')
+    %set(gcf,'CurrentAxes',handles.axes1);    
+    plot_data_calc(hObject,eventdata,handles)           %call WLT code;
+    % data is gone by here.
     xlabel(handles.axes1,'x [km]','fontsize',12);
     ylabel(handles.axes1,'y [km]','fontsize',12);
-    [Aup,Aupdy,Aupdx]=gsup(handles.c1,handles.x,handles.y,handles.u,handles.udy,handles.udx,handles.fS1);
-    [Adn,Adndy,Adndx]=gsdn(handles.c1,handles.x,handles.y,handles.u,handles.udy,handles.udx,handles.fS1);
-    Aup=Aup+Adn;
-    Aup(handles.mid,:)=Aup(handles.mid,:)/2;
-    Aupdy=Aupdy+Adndy;
-    Aupdy(handles.mid,:)=Aupdy(handles.mid,:)/2;
-    Aupdx=Aupdx+Adndx;
-    Aupdx(handles.mid,:)=Aupdx(handles.mid,:)/2;
-    handles.gg=1:handles.ny;
-    handles.Bzup=zeros(handles.ny,handles.nx);
-    for j=1:handles.ny
-      for i=1:handles.nx
-        Bzup(j,i)=polyval(handles.fZ1,Aup(j,i));
-        if Aup(j,i)>handles.amax1
-          Bzup(j,i)=polyval(handles.fZ1,handles.amax1);
-        elseif Aup(j,i)<handles.amin1
-          Bzup(j,i)=polyval(handles.fZ1,handles.amin1);
-        end
-      end
-    end
-    handles.B3 = Bzup(handles.gg,:)*handles.b0*1e9;              % defines 3rd axis
-    % ################### Begin Big Plot to handles.axes1 on handles.figure1 ####################
-    % SET CURRENT AXES HERE (AXES 1)
-    disp(get(gca,'Tag'));
+%     [handles.Aup,handles.Aupdx,handles.Aupdx]=gsup(handles.c1,handles.x,handles.y,handles.u,handles.udy,handles.udx,handles.fS1);
+%     [handles.Adn,handles.Adndy,handles.Adndx]=gsdn(handles.c1,handles.x,handles.y,handles.u,handles.udy,handles.udx,handles.fS1);
+%     handles.Aup=handles.Aup+handles.Adn;
+%     handles.Aup(handles.mid,:)=handles.Aup(handles.mid,:)/2;
+%     handles.Aupdx=handles.Aupdx+handles.Adndy;
+%     handles.Aupdx(handles.mid,:)=handles.Aupdx(handles.mid,:)/2;
+%     handles.Aupdx=handles.Aupdx+handles.Adndx;
+%     handles.Aupdx(handles.mid,:)=handles.Aupdx(handles.mid,:)/2;
+%     handles.gg=1:handles.ny;
+%     handles.Bzup=zeros(handles.ny,handles.nx);
+%     for j=1:handles.ny
+%       for i=1:handles.nx
+%         handles.Bzup(j,i)=polyval(handles.fZ1,handles.Aup(j,i));            % added handles to bzup
+%         if handles.Aup(j,i)>handles.amax1
+%           handles.Bzup(j,i)=polyval(handles.fZ1,handles.amax1);     % added handles to bzup
+%         elseif handles.Aup(j,i)<handles.amin1
+%           handles.Bzup(j,i)=polyval(handles.fZ1,handles.amin1);     % added handles to bzup
+%         end
+%       end
+%     end
+%     handles.B3 = handles.Bzup(handles.gg,:)*handles.b0*1e9;              % defines 3rd axis
+%     ################### Begin Big Plot to handles.axes1 on handles.figure1 ####################
+%     SET CURRENT AXES HERE (AXES 1)
     pcolor(handles.x*handles.L0,handles.y(handles.gg)*handles.L0,handles.B3);            % displays 3rd axis (bz) in faceted shading
     shading interp                       % changes shading to interpolated
     minb3=min(min(handles.B3));
@@ -944,7 +902,7 @@ function plotstuff(hObject, eventdata,handles)
     set(handles.zbar,'Fontsize',8);
     set(get(handles.zbar,'XLabel'),'String','Bz [nT]','Rotation',0,'HorizontalAlignment','left','Fontsize',10);
     hold on;
-    [cc,hh]=contour(handles.x*handles.L0,handles.y(handles.gg)*handles.L0,Aup(handles.gg,:),[-4:0.11:4],'k');
+    [cc,hh]=contour(handles.x*handles.L0,handles.y(handles.gg)*handles.L0,handles.Aup(handles.gg,:),[-4:0.11:4],'k');
     set(hh,'linewidth',1.0);
     %----------------quiver----------------
     u = handles.xa0;
@@ -964,11 +922,9 @@ function plotstuff(hObject, eventdata,handles)
     else
       axis([0, max(handles.x*handles.L0), min(handles.y*handles.L0), max(handles.y*handles.L0)])
     end
-
-    % ################### End Big Plot to handles.axes1 on handles.figure1 ####################
-    
-
-    %------------------plot norm vector on handles.axes1--------    
+%     guidata(hObject, handles);
+%     ################### End Big Plot to handles.axes1 on handles.figure1 ####################
+%     ------------------plot norm vector on handles.axes1--------    
 %     handles.xplotmax = max(get(handles.axes1,'Xlim'));
 %     handles.xplotmin = min(get(handles.axes1,'Xlim'));
 %     handles.yplotmax = max(get(handles.axes1,'Ylim'));
@@ -982,7 +938,7 @@ function plotstuff(hObject, eventdata,handles)
 %     handles.yLocNorm = handles.yplotmin+(0.3*handles.yplotmax);
 %     handles.countings = length(handles.NormVecMagNT)
 %     handles.y000 = zeros(handles.countings,1);
-    %     maxtexts=strcat(num2str(maxnormz*TN,'%3.1f'),' nT');
+%         maxtexts=strcat(num2str(maxnormz*TN,'%3.1f'),' nT');
 %     nu = handles.xLocNorm;
 %     nv = handles.yLocNorm;
 %     nx = handles.maxnorm;
@@ -991,23 +947,20 @@ function plotstuff(hObject, eventdata,handles)
 %     color = 'w';
 %     handles.nquiv=quiver(nu, nv, nx,ny,scale,color, 'linewidth', 1.0);
 %     handles.nquiv=quiver(nu, nv, nx,ny, scale,color);
-%     set(handles.nquiv, 'linewidth', 1.0)
-    
+%     set(handles.nquiv, 'linewidth', 1.0)    
 %     handles.nquiv=quiver(handles.axes1, handles.xLocNorm, handles.yLocNorm,...
 %         handles.maxnorm, 0,'w','linewidth',2.0);
-    % set(handles.figure1,'CurrentAxes',handles.axes1);
-    % position annotation on axes1 instead of figure1
-    % annotation('textbox', 'string', 'ANNOTATION!' , 'FontSize', 24, 'Color', 'red')
-    %-----------------end plot norm vector on handles.axes1 (big window)-----
-    guidata(hObject, handles);
-    %    text(handles.axes1,'position',[vecy+50,vecx,0],'string','TEXTZ0R');
-    %    text(handles.axes1,'position',[vecy+50,vecx],'String',strcat(num2str(maxnormz*TN,'%3.1f'),' nT'),'color','w','fontsize',10.0,'FontWeight','bold');
-    %    set(handles.axes1, 'NextPlot', 'add')
-    %    text(handles.axes1, (vecy+50),vecx,'String',strcat(num2str(maxnormz*TN,'%3.1f'),' nT'),'color','w','fontsize',10.0,'FontWeight','bold');
-
-
-
+%     set(handles.figure1,'CurrentAxes',handles.axes1);
+%     position annotation on axes1 instead of figure1
+%     annotation('textbox', 'string', 'ANNOTATION!' , 'FontSize', 24, 'Color', 'red')
+%     -----------------end plot norm vector on handles.axes1 (big window)-----
+%     guidata(hObject, handles);
+%        text(handles.axes1,'position',[vecy+50,vecx,0],'string','TEXTZ0R');
+%        text(handles.axes1,'position',[vecy+50,vecx],'String',strcat(num2str(maxnormz*TN,'%3.1f'),' nT'),'color','w','fontsize',10.0,'FontWeight','bold');
+%        set(handles.axes1, 'NextPlot', 'add')
+%        text(handles.axes1, (vecy+50),vecx,'String',strcat(num2str(maxnormz*TN,'%3.1f'),' nT'),'color','w','fontsize',10.0,'FontWeight','bold');
 %======================= End Plot Stuff ===============================
+% end
 
 function etxt_ny_Callback(hObject, eventdata, handles)
 handles.ny=str2double(get(hObject,'String'));
@@ -1354,27 +1307,27 @@ function btn_testcase_Callback(hObject, eventdata, handles)
 %    opn=2;      
 %    if opn==2
 %       
-%       [Aup,Aupdy,Aupdx]=gsup(c1,x,y,u,udy,udx,fS1);
-%       [Adn,Adndy,Adndx]=gsdn(c1,x,y,u,udy,udx,fS1);
+%       [handles.Aup,handles.Aupdx,handles.Aupdx]=gsup(c1,x,y,u,udy,udx,fS1);
+%       [handles.Adn,handles.Adndy,handles.Adndx]=gsdn(c1,x,y,u,udy,udx,fS1);
 %       
-%       Aup=Aup+Adn;
-%       Aup(mid,:)=Aup(mid,:)/2;
+%       handles.Aup=handles.Aup+handles.Adn;
+%       handles.Aup(mid,:)=handles.Aup(mid,:)/2;
 %       
-%       Aupdy=Aupdy+Adndy;
-%       Aupdy(mid,:)=Aupdy(mid,:)/2;
+%       handles.Aupdx=handles.Aupdx+handles.handles.Adndy;
+%       handles.Aupdx(mid,:)=handles.Aupdx(mid,:)/2;
 %       
-%       Aupdx=Aupdx+Adndx;
-%       Aupdx(mid,:)=Aupdx(mid,:)/2;            
+%       handles.Aupdx=handles.Aupdx+handles.Adndx;
+%       handles.Aupdx(mid,:)=handles.Aupdx(mid,:)/2;            
 %       
 %       gg=1:ny;
 %       
 %       Bzup=zeros(ny,nx);
 %       for j=1:ny
 %           for i=1:nx
-%               Bzup(j,i)=polyval(fZ1,Aup(j,i));
-%               if Aup(j,i)>amax1
+%               Bzup(j,i)=polyval(fZ1,handles.Aup(j,i));
+%               if handles.Aup(j,i)>amax1
 %                   Bzup(j,i)=polyval(fZ1,amax1);
-%               elseif Aup(j,i)<amin1
+%               elseif handles.Aup(j,i)<amin1
 %                   Bzup(j,i)=polyval(fZ1,amin1);
 %               end
 %           end
@@ -1396,7 +1349,7 @@ function btn_testcase_Callback(hObject, eventdata, handles)
 %       %    'HorizontalAlignment','left','Fontsize',8);
 %       
 %       hold on
-%       [cc,hh]=contour(x*L0,y(gg)*L0,Aup(gg,:),[-4:0.11:4],'k');
+%       [cc,hh]=contour(x*L0,y(gg)*L0,handles.Aup(gg,:),[-4:0.11:4],'k');
 %       set(hh,'linewidth',1.0);
 %       
 %       hr1=quiver(xa0,zeros(1,ndata),bxs',bys',0.3,'w');
@@ -1477,15 +1430,13 @@ function polynums(hObject,eventdata, handles)
 %======================= BEGIN PLOT POLY FIT===============================
 
 function polyplot(hObject,eventdata,handles)
-    %polycalc(hObject,eventdata,handles)
-    % cla(handles.axes2)
-    cla(handles.axes2,'reset')
-    set(gcf,'CurrentAxes',handles.axes2); 
+    % Used to call polycalc here... ran into an error, so just included it 
+    % here instead.
     handles.ax1=handles.amin1:0.01:handles.amax1;
     handles.df1=polyder(handles.fS1); %dPt/dA        % derivative of the fit 
     handles.yys1=polyval(handles.fS1,handles.ax1);           % value of the function f1
     handles.yyz1=polyval(handles.fZ1,handles.ax1);
-    guidata(hObject, handles);
+    % guidata(hObject, handles);
     % ------ plot TOP RIGHT function from WLT's 6 figures
     set(handles.axes2,'NextPlot','replace')
     plot(handles.axes2,handles.An,handles.pbz,'ko','Markersize',5); grid on; 
@@ -1500,3 +1451,11 @@ function polyplot(hObject,eventdata,handles)
 function polycalc(hObject, eventdata, handles)
     %handles.amax1=max(handles.An); amin1=min(handles.An);         
 
+
+% --- Executes during object creation, after setting all properties.
+function axes1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to axes1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: place code in OpeningFcn to populate axes1

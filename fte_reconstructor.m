@@ -1,35 +1,35 @@
-function varargout = dve_rectangleFTEsearch_V4(varargin)
-% DVE_RECTANGLEFTESEARCH_V4 MATLAB code for dve_rectangleFTEsearch_V4.fig
-%      DVE_RECTANGLEFTESEARCH_V4, by itself, creates a new DVE_RECTANGLEFTESEARCH_V4 or raises the existing
+function varargout = dve_rectangleFTEsearch_V5(varargin)
+% DVE_RECTANGLEFTESEARCH_V5 MATLAB code for dve_rectangleFTEsearch_V5.fig
+%      DVE_RECTANGLEFTESEARCH_V5, by itself, creates a new DVE_RECTANGLEFTESEARCH_V5 or raises the existing
 %      singleton*.
 %
-%      H = DVE_RECTANGLEFTESEARCH_V4 returns the handle to a new DVE_RECTANGLEFTESEARCH_V4 or the handle to
+%      H = DVE_RECTANGLEFTESEARCH_V5 returns the handle to a new DVE_RECTANGLEFTESEARCH_V5 or the handle to
 %      the existing singleton*.
 %
-%      DVE_RECTANGLEFTESEARCH_V4('CALLBACK',hObject,eventData,handles,...) calls the local
-%      function named CALLBACK in DVE_RECTANGLEFTESEARCH_V4.M with the given input arguments.
+%      DVE_RECTANGLEFTESEARCH_V5('CALLBACK',hObject,eventData,handles,...) calls the local
+%      function named CALLBACK in DVE_RECTANGLEFTESEARCH_V5.M with the given input arguments.
 %
-%      DVE_RECTANGLEFTESEARCH_V4('Property','Value',...) creates a new DVE_RECTANGLEFTESEARCH_V4 or raises the
+%      DVE_RECTANGLEFTESEARCH_V5('Property','Value',...) creates a new DVE_RECTANGLEFTESEARCH_V5 or raises the
 %      existing singleton*.  Starting from the left, property value pairs are
-%      applied to the GUI before dve_rectangleFTEsearch_V4_OpeningFcn gets called.  An
+%      applied to the GUI before dve_rectangleFTEsearch_V5_OpeningFcn gets called.  An
 %      unrecognized property name or invalid value makes property application
-%      stop.  All inputs are passed to dve_rectangleFTEsearch_V4_OpeningFcn via varargin.
+%      stop.  All inputs are passed to dve_rectangleFTEsearch_V5_OpeningFcn via varargin.
 %
 %      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
 %      instance to run (singleton)".
 %
 % See also: GUIDE, GUIDATA, GUIHANDLES
 
-% Edit the above text to modify the response to help dve_rectangleFTEsearch_V4
+% Edit the above text to modify the response to help dve_rectangleFTEsearch_V5
 
-% Last Modified by GUIDE v2.5 22-Aug-2011 21:43:43
+% Last Modified by GUIDE v2.5 26-Aug-2011 23:25:09
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
 gui_State = struct('gui_Name',       mfilename, ...
                    'gui_Singleton',  gui_Singleton, ...
-                   'gui_OpeningFcn', @dve_rectangleFTEsearch_V4_OpeningFcn, ...
-                   'gui_OutputFcn',  @dve_rectangleFTEsearch_V4_OutputFcn, ...
+                   'gui_OpeningFcn', @dve_rectangleFTEsearch_V5_OpeningFcn, ...
+                   'gui_OutputFcn',  @dve_rectangleFTEsearch_V5_OutputFcn, ...
                    'gui_LayoutFcn',  [] , ...
                    'gui_Callback',   []);
 if nargin && ischar(varargin{1})
@@ -44,15 +44,15 @@ end
 % End initialization code - DO NOT EDIT
 
 
-% --- Executes just before dve_rectangleFTEsearch_V4 is made visible.
-function dve_rectangleFTEsearch_V4_OpeningFcn(hObject, eventdata, handles, varargin)
+% --- Executes just before dve_rectangleFTEsearch_V5 is made visible.
+function dve_rectangleFTEsearch_V5_OpeningFcn(hObject, eventdata, handles, varargin)
 % This function has no output args, see OutputFcn.
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-% varargin   command line arguments to dve_rectangleFTEsearch_V4 (see VARARGIN)
+% varargin   command line arguments to dve_rectangleFTEsearch_V5 (see VARARGIN)
 
-% Choose default command line output for dve_rectangleFTEsearch_V4
+% Choose default command line output for dve_rectangleFTEsearch_V5
 handles.output = hObject;
 
 handles.nden=1e6;         %factor for density
@@ -80,12 +80,12 @@ disp(['handles.dhead from OpenFcn=',num2str(handles.dhead)])
 
 guidata(hObject, handles);
 
-% UIWAIT makes dve_rectangleFTEsearch_V4 wait for user response (see UIRESUME)
+% UIWAIT makes dve_rectangleFTEsearch_V5 wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
 
 
 % --- Outputs from this function are returned to the command line.
-function varargout = dve_rectangleFTEsearch_V4_OutputFcn(hObject, eventdata, handles) 
+function varargout = dve_rectangleFTEsearch_V5_OutputFcn(hObject, eventdata, handles) 
 % varargout  cell array for returning output args (see VARARGOUT);
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -136,7 +136,7 @@ heada = ['TH',upper(handles.sc),': ',handles.doy,': ',tmnm1(12:20),' to ', tmnm2
 headb = strcat('Theta = ', num2str(handles.theta, '%3.2f'),', Phi = ', num2str(handles.phi, '%3.2f'));
 figpos = [1, 1, 800,600];
 outpos = [1, 1, 900,700];
-figure('Position',figpos);
+figure(2,'Position',figpos);
 hgload('handles.axes1.sav');
 handles.axesSave=gca;
 set(handles.axesSave,'Units','pixels');
@@ -195,7 +195,7 @@ filename = ['gsmap_','th',handles.sc,'_',dnm,'_',tmnm1(13:14),tmnm1(16:17),tmnm1
 saveas(fig,filename,'png');
 disp(['File saved as ', filename])
 close(figure(fig));
-        
+
 %========================== Load Button ===============================
 function btn_load_Callback(hObject, eventdata, handles)
     if isfield(handles,'etxt_w') == 0
@@ -230,7 +230,7 @@ function btn_load_Callback(hObject, eventdata, handles)
 
 
     disp('===========================Begin LOAD Button Data=================================')
-    dir = '~/Documents/MATLAB/';
+    dir = 'C:\Users\Eriksson\My Documents\MATLAB\';
     HHi = sscanf(handles.ti,'%2c%0.2*4c');
     MMi = sscanf(handles.ti, '%*3c%2c0%*2c', 2);
     SSi = sscanf(handles.ti, '%*6c%2c0', 2);
